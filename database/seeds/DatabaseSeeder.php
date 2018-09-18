@@ -45,25 +45,20 @@ class DatabaseSeeder extends Seeder
             'start_date' => '2018-11-01',
             'end_date' => '2018-12-31',
             'type' => 'individual',
-            'image_url' => 'https://google.com'
+            'image_url' => 'http://commutesmartseacoast.org/wp-content/themes/seacoast/images/conquer-the-cold-banner.png'
         ]);
-
+        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
         // loop through and create 6000 trips
             $trips = [];
-            for ($i=0; $i < 6000; $i++) { 
+            for ($i=0; $i < 6000; $i++) {
                 $trips[] = [
-                    'mode' => 'walk',
+                    'mode' => $modes[array_rand($modes, 1)],
                     'date' => '2018-11-10',
                     'miles' => rand(10, 30) - 5,
                     'challenge_id' => $challenge->id,
                     'user_id' => $general_user->id
                 ]; 
             }
-            $trips = Trip::insert($trips);
-
-        // $general_user->name = 'Alex Rindone';
-    	// $general_user->email = 'arindone1679@gmail.com';
-        // $general_user->password = Hash::make('iapp@123');
-        // $general_user->save();
+        $trips = Trip::insert($trips);
     }
 }

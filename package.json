@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "moment": "^2.22.2",
+        "vue-currency-filter": "^2.3.0",
         "vue-rangedate-picker": "^0.3.4",
         "vue2-datepicker": "^2.4.1",
         "vue2-daterange-picker": "^0.1.1"

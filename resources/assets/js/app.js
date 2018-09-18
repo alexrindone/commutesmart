@@ -11,7 +11,16 @@ window.Vue = require('vue');
 
 import VueRangedatePicker from 'vue-rangedate-picker';
 import DateRangePicker from 'vue2-daterange-picker';
-import DatePicker from 'vue2-datepicker'
+import DatePicker from 'vue2-datepicker';
+import VueCurrencyFilter from 'vue-currency-filter';
+Vue.use(VueCurrencyFilter, {
+    symbol: '$',
+    thousandsSeparator: ',',
+    fractionCount: 0,
+    fractionSeparator: '.',
+    symbolPosition: 'front',
+    symbolSpacing: true
+});
 
 
 /**

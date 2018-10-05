@@ -20,3 +20,26 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.total-tile {
+  text-align: center;
+  .head {
+    font-size: 18px;
+    @media (min-width: $x-small) {
+      font-size: 24px;
+    }
+    font-weight: 800;
+    color: #333333;
+    margin-bottom: 0!important;
+  }
+}
+
+table {
+  &.leaderboard {
+    tr {
+      th {
+        border-top: 0;
+      }
+    }
+  }
+}

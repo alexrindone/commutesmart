@@ -122,10 +122,10 @@
 export default {
   mounted() {
       // if only one challenge open, have it default as selected
-      if (this.challenges.length <= 1) {
+      if (this.challenges.length > 0) {
+          console.log(this.challenges);
           this.form.challenge_id = this.challenges[0].id;
       }
-      console.log(moment().format('YYYY-MM-D'));
   },
   props: {
     data: {
@@ -136,16 +136,11 @@ export default {
   data() {
     return {
       form: {
-        date: moment().format('YYYY-MM-D'),
+        date: moment().format('YYYY-MM-DD'),
         challenge_id: "",
         mode: "",
-        miles: "",
-        dateRange: {
-            start: "",
-            end: ""
-        }
+        miles: ""
       },
-      rangey: "",
       trips: this.data.trips,
       challenges: this.data.challenges,
       modes: this.data.modes,
@@ -155,29 +150,30 @@ export default {
   },
   methods: {
     addDate() {
-        this.dates.push(this.form.date);
+        let currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
+        let nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+        console.log(nextDate);
+        // turn current date back into moment date to then add 1
+        this.dates.push(nextDate);
     },
     addTrip() {
         // add initial form date to dates
         this.dates.unshift(this.form.date);
         this.form.dates = this.dates;
-        console.log(this.form);
-        this.dates = [];
+        
       axios
         .post(`/trips/add`, this.form)
         .then(response => {
-            console.log(response.data.payload);
+            this.trips = response.data.payload;
+            // reset stuff
+            this.dates = [];
             this.form = {
                 date: "",
                 mode: "",
                 miles: "",
                 challenge_id: this.form.challenge_id
             };
-            let newTrip = response.data.payload;
-            console.log(this.activeChallenge);
             newTrip.challenge = this.activeChallenge;
-            // need to figure out how to get all trips to show that were just created, with ids
-          this.trips.push(newTrip);
         })
         .catch(error => {});
     },

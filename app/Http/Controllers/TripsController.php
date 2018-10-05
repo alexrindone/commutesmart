@@ -32,7 +32,7 @@ class TripsController extends Controller
     {
         $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
         // get all user trips, maybe we should limit how many? It might not matter
-        $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->get();
+        $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date')->get();
         // get challenges for form dropdown
         $challenges = Challenge::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
         $user = Auth::user();
@@ -58,8 +58,10 @@ class TripsController extends Controller
         })->toArray();
         $created = Trip::insert($tripsToAdd);
         if ($created) {
+            // get all trips
+            $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date')->get();
 			// Success
-			return response()->json(['status' => true, 'message' => 'Trip Added Successfully!', 'payload' => $created]);
+			return response()->json(['status' => true, 'message' => 'Trip(s) Added Successfully!', 'payload' => $trips]);
 		}
 	
 		// Fail

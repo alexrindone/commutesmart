@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LeaderboardController@individual')->middleware(['auth']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('profile')->middleware(['auth'])->group(function () {
     Route::get('/', 'ProfileController@myProfile');
@@ -31,11 +29,12 @@ Route::prefix('trips')->middleware(['auth'])->group(function () {
     Route::delete('{id}/delete-trip', 'TripsController@deleteTrip');
 });
 
-Route::prefix('leaderboard')->middleware(['auth'])->group(function () {
+Route::prefix('leaderboard')->group(function () {
     Route::get('/', 'LeaderboardController@individual');
+    Route::get('/companies', 'LeaderboardController@companiesLeaderboard');
 });
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin_user'])->group(function () {
     Route::get('/companies', 'AdminController@companies');
     Route::post('/add-company', 'AdminController@addCompany');
     Route::put('{id}/edit-company', 'AdminController@editCompany');

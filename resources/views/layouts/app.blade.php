@@ -28,7 +28,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a> -->
                 <a class="nav-bar-brand" href="{{url('/')}}">
-                    <img src="http://commutesmartseacoast.org/wp-content/themes/seacoast/images/logo.png" style="max-width:200px; height: auto;">
+                    <img src="/images/logo.png" style="max-width:200px; height: auto;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -51,12 +51,39 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/leaderboard">{{ __('Leaderboard') }}</a>
+                            </li>
+                            @if (Auth::user()->email == 'arindone1679@gmail.com' || Auth::user()->email == 'anne@coastbus.org')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    Admin <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/admin/companies"
+                                       >
+                                        {{ __('Manage Companies') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/challenges"
+                                       >
+                                        {{ __('Manage Challenges') }}
+                                    </a>
+                                </div>
+                            </li>
+                            @endif
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Profile <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/trips">
+                                        {{ __('My Trips') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/profile">
+                                        {{ __('My Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -16,15 +16,15 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-4 total-tile">
-                                            <h4 v-if="users" class="head">{{totals.miles}}</h4>
+                                            <h4 class="head">{{totals.miles}}</h4>
                                             <span style="font-size: 12px;">Miles Saved</span>
                                         </div>
                                         <div class="col-4 total-tile">
-                                            <h4 v-if="users" class="head">{{totals.co}} lbs</h4>
+                                            <h4 class="head">{{totals.co}} lbs</h4>
                                             <span style="font-size: 12px;">CO<sub>2</sub> Saved</span>
                                         </div>
                                         <div class="col-4 total-tile">
-                                            <h4 v-if="users" class="head">{{totals.money | currency}}</h4>
+                                            <h4 class="head">{{totals.money | currency}}</h4>
                                             <span style="font-size: 12px;">Saved</span>
                                         </div>
                                     </div>
@@ -44,23 +44,25 @@
                                         </div>
                                     </div>
                                     <div class="row table-responsive-sm">
-                                        <table class="table leaderboard" v-if="users.length > 0">
+                                        <table class="table leaderboard" v-if="sumTrips.length > 0">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Company</th>
                                                     <th scope="col">Trip Total</th>
                                                     <th scope="col">Miles</th>
+                                                    <th scope="col">Per Capita</th>
                                                     <th scope="col">CO2 Saved</th>
                                                     <th scope="col">Money Saved</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr v-for="user in sumTrips">
-                                                    <td>{{user.name}}<br />{{user.company.name}}</td>
-                                                    <td>{{user.total_trips}}</td>
-                                                    <td>{{user.total_miles}}mi</td>
-                                                    <td>{{user.total_saved}}lbs</td>
-                                                    <td>{{user.total_money | currency}}</td>
+                                                <tr v-for="company in sumTrips">
+                                                    <td>{{company.name}}<br /><span style="font-size:12px;">{{company.size}}</span></td>
+                                                    <td>{{company.totals.trips}}</td>
+                                                    <td>{{company.totals.miles}}mi</td>
+                                                    <td>{{company.totals.capita}}</td>
+                                                    <td>{{company.totals.co}}lbs</td>
+                                                    <td>{{company.totals.money | currency}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -88,7 +90,7 @@ export default {
   },
   data() {
     return {
-      users: this.data.users,
+      companies: this.data.companies,
       modes: this.data.modes,
       challenge: this.data.challenge,
       filtered: 'unfiltered',
@@ -105,18 +107,18 @@ export default {
     };
   },
   methods: {
-        calculateTotals(users) {
+        calculateTotals(companies) {
             this.totals = {
-                miles: _.sumBy(users, 'total_miles'),
-                co: _.sumBy(users, 'total_saved'),
-                money: _.sumBy(users, 'total_money')
+                miles: _.sumBy(companies, 'totals.miles'),
+                co: _.sumBy(companies, 'totals.co'),
+                money: _.sumBy(companies, 'totals.money')
             }
         }
   },
   computed: {
         sumTrips() {
             this.loading = true;
-            let users = this.users;
+            let companies = this.companies;
             let filtered = this.filtered;
             this.totals = {
                 miles: 0,
@@ -125,30 +127,43 @@ export default {
             }
             let searchName = this.searchName;
             if (searchName) {
-                users = _.filter(users, function(user){
-                    return user.name.indexOf(searchName) != -1;
+                companies = _.filter(companies, function(company){
+                    return company.name.indexOf(searchName) != -1;
                 });
             }
-            _.forEach(users, function(user) {
-                let trips = user.trips;
-                // trying to add filter by mode
-                if (filtered != 'unfiltered') {
-                    user.filtered_trips = _.filter(user.trips, function(trip) {
-                        return trip.mode == filtered;
-                    });
-                } else {
-                    user.filtered_trips = user.trips;
-                }
-                user.trips = trips;
-                user.total_miles = _.sumBy(user.filtered_trips, 'miles');
-                user.total_trips = user.filtered_trips.length;
-                user.total_saved = _.round(user.total_miles * 0.9195);
-                user.total_money = _.round(user.total_miles * 0.57);
+            _.forEach(companies, function(company){
+                 _.forEach(company.users, function(user) {
+                    let trips = user.trips;
+                    // trying to add filter by mode
+                    if (filtered != 'unfiltered') {
+                        user.filtered_trips = _.filter(user.trips, function(trip) {
+                            return trip.mode == filtered;
+                        });
+                    } else {
+                        user.filtered_trips = user.trips;
+                    }
+                    user.trips = trips;
+                    user.total_miles = _.sumBy(user.filtered_trips, 'miles');
+                    user.total_trips = user.filtered_trips.length;
+                    user.total_saved = _.round(user.total_miles * 0.9195);
+                    user.total_money = _.round(user.total_miles * 0.57);
+                });
+                company.totals = {
+                    miles: _.sumBy(company.users, 'total_miles'),
+                    co: _.sumBy(company.users, 'total_saved'),
+                    money: _.sumBy(company.users, 'total_money'),
+                    trips: _.sumBy(company.users, 'total_trips')
+                };
+
+                // tripcount / employees to set per capita
+                company.totals.capita = company.totals.trips / company.users.length;
             });
-            // sum up totals after users are looped through each time
-            this.calculateTotals(users);
+
+            this.calculateTotals(companies);
+               
             this.loading = false;
-            return _.orderBy(users, ['total_trips'], ['desc']);
+            // order by per capita
+            return _.orderBy(companies, ['totals.capital'], ['desc']);
         }
     }
 };

@@ -29,8 +29,11 @@ Vue.use(VueCurrencyFilter, {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+// Leaderboards
 Vue.component('leaderboard', require('./components/Leaderboard.vue'));
+Vue.component('companies-leaderboard', require('./components/CompaniesLeaderboard.vue'));
+
 Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('companies', require('./components/Companies.vue'));
 Vue.component('challenges', require('./components/Challenges.vue'));

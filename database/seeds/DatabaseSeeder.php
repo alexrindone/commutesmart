@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'start_date' => '2018-11-01',
             'end_date' => '2018-12-31',
             'type' => 'individual',
-            'image_url' => 'http://commutesmartseacoast.org/wp-content/themes/seacoast/images/conquer-the-cold-banner.png'
+            'image_url' => '/images/conquer-the-cold-banner.png'
         ]);
         $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
         // loop through and create 6000 trips

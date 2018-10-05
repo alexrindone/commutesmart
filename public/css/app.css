@@ -10485,3 +10485,24 @@ a.text-dark:focus {
   background-attachment: fixed;
 }
 
+.total-tile {
+  text-align: center;
+}
+
+.total-tile .head {
+  font-size: 18px;
+  font-weight: 800;
+  color: #333333;
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 576px) {
+  .total-tile .head {
+    font-size: 24px;
+  }
+}
+
+table.leaderboard tr th {
+  border-top: 0;
+}
+

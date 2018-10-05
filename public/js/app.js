@@ -30444,7 +30444,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(139);
-module.exports = __webpack_require__(186);
+module.exports = __webpack_require__(187);
 
 
 /***/ }),
@@ -30459,7 +30459,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_daterange_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue2_daterange_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_datepicker__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue2_datepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_currency_filter__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_currency_filter__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_currency_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_currency_filter__);
 
 /**
@@ -30491,12 +30491,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_currency_filter___default.a, {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(168));
-Vue.component('leaderboard', __webpack_require__(171));
-Vue.component('profile', __webpack_require__(174));
-Vue.component('companies', __webpack_require__(177));
-Vue.component('challenges', __webpack_require__(180));
-Vue.component('trips', __webpack_require__(183));
+// Leaderboards
+Vue.component('leaderboard', __webpack_require__(172));
+Vue.component('companies-leaderboard', __webpack_require__(192));
+
+Vue.component('profile', __webpack_require__(175));
+Vue.component('companies', __webpack_require__(178));
+Vue.component('challenges', __webpack_require__(181));
+Vue.component('trips', __webpack_require__(184));
 Vue.component('VueRangedatePicker', __WEBPACK_IMPORTED_MODULE_0_vue_rangedate_picker___default.a);
 Vue.component('DatePicker', __WEBPACK_IMPORTED_MODULE_2_vue2_datepicker___default.a);
 
@@ -63971,131 +63973,34 @@ var ma=Object.freeze({}),ca=Object.prototype.toString,ha=(h("slot,component",!0)
 
 /***/ }),
 /* 168 */
+/***/ (function(module, exports) {
+
+module.exports=function(r){var t={};function n(e){if(t[e])return t[e].exports;var o=t[e]={i:e,l:!1,exports:{}};return r[e].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=r,n.c=t,n.d=function(r,t,e){n.o(r,t)||Object.defineProperty(r,t,{enumerable:!0,get:e})},n.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},n.t=function(r,t){if(1&t&&(r=n(r)),8&t)return r;if(4&t&&"object"==typeof r&&r&&r.__esModule)return r;var e=Object.create(null);if(n.r(e),Object.defineProperty(e,"default",{enumerable:!0,value:r}),2&t&&"string"!=typeof r)for(var o in r)n.d(e,o,function(t){return r[t]}.bind(null,o));return e},n.n=function(r){var t=r&&r.__esModule?function(){return r.default}:function(){return r};return n.d(t,"a",t),t},n.o=function(r,t){return Object.prototype.hasOwnProperty.call(r,t)},n.p="",n(n.s=0)}([function(r,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(r){return typeof r}:function(r){return r&&"function"==typeof Symbol&&r.constructor===Symbol&&r!==Symbol.prototype?"symbol":typeof r},o=function(r){return r&&r.__esModule?r:{default:r}}(n(1));var a={install:function(r,t){function n(r){return void 0===r}function a(r){u=n(r.symbol)?"":r.symbol,i=n(r.thousandsSeparator)?".":r.thousandsSeparator,s=n(r.fractionCount)?0:r.fractionCount,c=n(r.fractionSeparator)?",":r.fractionSeparator,f=n(r.symbolPosition)?"front":r.symbolPosition,l=!!n(r.symbolSpacing)||r.symbolSpacing}n(t)&&(t={});var u="",i=".",s=0,c=",",f="front",l=!0;a(t),r.filter("currency",function(r,p,m,d,y,b,v){a(t),"object"===(void 0===p?"undefined":e(p))&&(m=p.thousandsSeparator,d=p.fractionCount,y=p.fractionSeparator,b=p.symbolPosition,v=p.symbolSpacing,p=p.symbol),n(p)||(u=p),n(m)||(i=m),n(d)||(s=d),n(y)||(c=y),n(b)||(f=b),n(v)||(l=v);var g=0,h="-"===String(r).charAt(0);h&&(r=String(r).slice(1));var S=parseFloat(r);isNaN(S)||(g=S);var M="%s%v";return M="front"===f?l?"%s %v":"%s%v":l?"%v %s":"%v%s",s>0&&(r=o.default.toFixed(r,s)),g=o.default.formatMoney(r,{format:M,symbol:u,precision:s,thousand:i,decimal:c}),h&&(g="-"+g),g})}};t.default=a},function(r,t,n){
+/*!
+ * accounting.js v0.4.1
+ * Copyright 2014 Open Exchange Rates
+ *
+ * Freely distributable under the MIT license.
+ * Portions of accounting.js are inspired or borrowed from underscore.js
+ *
+ * Full details and documentation:
+ * http://openexchangerates.github.io/accounting.js/
+ */
+!function(n,e){var o={version:"0.4.1",settings:{currency:{symbol:"$",format:"%s%v",decimal:".",thousand:",",precision:2,grouping:3},number:{precision:0,grouping:3,thousand:",",decimal:"."}}},a=Array.prototype.map,u=Array.isArray,i=Object.prototype.toString;function s(r){return!!(""===r||r&&r.charCodeAt&&r.substr)}function c(r){return u?u(r):"[object Array]"===i.call(r)}function f(r){return r&&"[object Object]"===i.call(r)}function l(r,t){var n;for(n in r=r||{},t=t||{})t.hasOwnProperty(n)&&null==r[n]&&(r[n]=t[n]);return r}function p(r,t,n){var e,o,u=[];if(!r)return u;if(a&&r.map===a)return r.map(t,n);for(e=0,o=r.length;e<o;e++)u[e]=t.call(n,r[e],e,r);return u}function m(r,t){return r=Math.round(Math.abs(r)),isNaN(r)?t:r}function d(r){var t=o.settings.currency.format;return"function"==typeof r&&(r=r()),s(r)&&r.match("%v")?{pos:r,neg:r.replace("-","").replace("%v","-%v"),zero:r}:r&&r.pos&&r.pos.match("%v")?r:s(t)?o.settings.currency.format={pos:t,neg:t.replace("%v","-%v"),zero:t}:t}var y=o.unformat=o.parse=function(r,t){if(c(r))return p(r,function(r){return y(r,t)});if("number"==typeof(r=r||0))return r;t=t||o.settings.number.decimal;var n=new RegExp("[^0-9-"+t+"]",["g"]),e=parseFloat((""+r).replace(/\((.*)\)/,"-$1").replace(n,"").replace(t,"."));return isNaN(e)?0:e},b=o.toFixed=function(r,t){t=m(t,o.settings.number.precision);var n=Math.pow(10,t);return(Math.round(o.unformat(r)*n)/n).toFixed(t)},v=o.formatNumber=o.format=function(r,t,n,e){if(c(r))return p(r,function(r){return v(r,t,n,e)});r=y(r);var a=l(f(t)?t:{precision:t,thousand:n,decimal:e},o.settings.number),u=m(a.precision),i=r<0?"-":"",s=parseInt(b(Math.abs(r||0),u),10)+"",d=s.length>3?s.length%3:0;return i+(d?s.substr(0,d)+a.thousand:"")+s.substr(d).replace(/(\d{3})(?=\d)/g,"$1"+a.thousand)+(u?a.decimal+b(Math.abs(r),u).split(".")[1]:"")},g=o.formatMoney=function(r,t,n,e,a,u){if(c(r))return p(r,function(r){return g(r,t,n,e,a,u)});r=y(r);var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),s=d(i.format);return(r>0?s.pos:r<0?s.neg:s.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal))};o.formatColumn=function(r,t,n,e,a,u){if(!r)return[];var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),b=d(i.format),g=b.pos.indexOf("%s")<b.pos.indexOf("%v"),h=0;return p(p(r,function(r,t){if(c(r))return o.formatColumn(r,i);var n=((r=y(r))>0?b.pos:r<0?b.neg:b.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal));return n.length>h&&(h=n.length),n}),function(r,t){return s(r)&&r.length<h?g?r.replace(i.symbol,i.symbol+new Array(h-r.length+1).join(" ")):new Array(h-r.length+1).join(" ")+r:r})},void 0!==r&&r.exports&&(t=r.exports=o),t.accounting=o}()}]);
+
+/***/ }),
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(169)
+var __vue_script__ = __webpack_require__(173)
 /* template */
-var __vue_template__ = __webpack_require__(170)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 169 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {}
-});
-
-/***/ }),
-/* 170 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
-  }
-}
-
-/***/ }),
-/* 171 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(172)
-/* template */
-var __vue_template__ = __webpack_require__(173)
+var __vue_template__ = __webpack_require__(174)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64134,7 +64039,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64217,35 +64122,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log(this.data);
-    },
+    mounted: function mounted() {},
 
     props: {
         data: {
@@ -64258,45 +64137,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             users: this.data.users,
             modes: this.data.modes,
             challenge: this.data.challenge,
-            filtered: false,
+            filtered: 'unfiltered',
             totalMiles: 0,
             coSaved: 0,
-            moneySaved: 0
+            moneySaved: 0,
+            searchName: '',
+            totals: {
+                miles: 0,
+                co: 0,
+                money: 0
+            },
+            loading: false
         };
     },
 
-    methods: {},
+    methods: {
+        calculateTotals: function calculateTotals(users) {
+            this.totals = {
+                miles: _.sumBy(users, 'total_miles'),
+                co: _.sumBy(users, 'total_saved'),
+                money: _.sumBy(users, 'total_money')
+            };
+        }
+    },
     computed: {
         sumTrips: function sumTrips() {
+            this.loading = true;
             var users = this.users;
             var filtered = this.filtered;
-            var sumMiles = this.totalMiles;
-            var coSaved = this.coSaved;
-            var moneySaved = this.moneySaved;
+            this.totals = {
+                miles: 0,
+                co: 0,
+                money: 0
+            };
+            var searchName = this.searchName;
+            if (searchName) {
+                users = _.filter(users, function (user) {
+                    return user.name.indexOf(searchName) != -1;
+                });
+            }
             _.forEach(users, function (user) {
-                if (filtered) {
-                    _.filter(user.trips, function (trip) {
-                        return trip.mode != filtered;
+                var trips = user.trips;
+                // trying to add filter by mode
+                if (filtered != 'unfiltered') {
+                    user.filtered_trips = _.filter(user.trips, function (trip) {
+                        return trip.mode == filtered;
                     });
+                } else {
+                    user.filtered_trips = user.trips;
                 }
-                user.total_miles = _.sumBy(user.trips, 'miles');
-                user.total_trips = user.trips.length;
+                user.trips = trips;
+                user.total_miles = _.sumBy(user.filtered_trips, 'miles');
+                user.total_trips = user.filtered_trips.length;
                 user.total_saved = _.round(user.total_miles * 0.9195);
                 user.total_money = _.round(user.total_miles * 0.57);
-                sumMiles = sumMiles + user.total_miles;
-                coSaved = coSaved + user.total_saved;
-                moneySaved = moneySaved + user.total_money;
             });
-            this.totalMiles = sumMiles;
-            this.coSaved = coSaved;
-            this.moneySaved = moneySaved;
-            return users;
+            // sum up totals after users are looped through each time
+            this.calculateTotals(users);
+            this.loading = false;
+            return _.orderBy(users, ['total_trips'], ['desc']);
         }
     }
 });
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64305,57 +64210,55 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12 mx-auto" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: _vm.challenge.image_url, alt: _vm.challenge.name }
-              })
-            ])
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 mx-auto" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: _vm.challenge.image_url, alt: _vm.challenge.name }
+            })
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "container py-4" }, [
+      _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "mx-auto col-sm-12" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
-                _c("div", { staticClass: "container py-3" }, [
+                _c("div", { staticClass: "container" }, [
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "card col-sm-4" }, [
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h5", { staticClass: "card-title" }, [
-                          _vm._v("Miles Saved")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(_vm._s(_vm.totalMiles))
-                        ])
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _vm.users
+                        ? _c("h4", { staticClass: "head" }, [
+                            _vm._v(_vm._s(_vm.totals.miles))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Miles Saved")
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card col-sm-4" }, [
-                      _c("div", { staticClass: "card-body" }, [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(_vm._s(_vm.coSaved))
-                        ])
-                      ])
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _vm.users
+                        ? _c("h4", { staticClass: "head" }, [
+                            _vm._v(_vm._s(_vm.totals.co) + " lbs")
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._m(0)
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card col-sm-4" }, [
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h5", { staticClass: "card-title" }, [
-                          _vm._v("Saved")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(_vm._s(_vm._f("currency")(_vm.moneySaved)))
-                        ])
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _vm.users
+                        ? _c("h4", { staticClass: "head" }, [
+                            _vm._v(_vm._s(_vm._f("currency")(_vm.totals.money)))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Saved")
                       ])
                     ])
                   ])
@@ -64363,44 +64266,140 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "container py-3" }, [
-                  _c("div", { staticClass: "row table-responsive-sm" }, [
-                    _vm.users.length > 0
-                      ? _c("table", { staticClass: "table" }, [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.sumTrips, function(user) {
-                              return _c("tr", [
-                                _c("td", [
-                                  _vm._v(_vm._s(user.name)),
-                                  _c("br"),
-                                  _vm._v(_vm._s(user.company.name))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(user.total_miles) + "mi")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(user.total_trips))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(user.total_saved) + "lbs")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(_vm._f("currency")(user.total_money))
-                                  )
-                                ])
-                              ])
+                !_vm.loading
+                  ? _c("div", { staticClass: "container" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group row justify-content-end" },
+                        [
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchName,
+                                  expression: "searchName"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "search",
+                                id: "search",
+                                placeholder: "Search by Name"
+                              },
+                              domProps: { value: _vm.searchName },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchName = $event.target.value
+                                }
+                              }
                             })
-                          )
-                        ])
-                      : _c("p", [_vm._v("No trips found.")])
-                  ])
-                ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filtered,
+                                    expression: "filtered"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { id: "filtered" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.filtered = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: { selected: "", value: "unfiltered" }
+                                  },
+                                  [_vm._v("Filter by Mode")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.modes, function(mode) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: mode } },
+                                    [_vm._v(_vm._s(mode))]
+                                  )
+                                })
+                              ],
+                              2
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row table-responsive-sm" }, [
+                        _vm.users.length > 0
+                          ? _c("table", { staticClass: "table leaderboard" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.sumTrips, function(user) {
+                                  return _c("tr", [
+                                    _c("td", [
+                                      _vm._v(_vm._s(user.name)),
+                                      _c("br"),
+                                      _vm._v(_vm._s(user.company.name))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(user.total_trips))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(user.total_miles) + "mi")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(user.total_saved) + "lbs")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm._f("currency")(user.total_money)
+                                        )
+                                      )
+                                    ])
+                                  ])
+                                })
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.sumTrips.length <= 0
+                          ? _c("p", [_vm._v("No trips found.")])
+                          : _vm._e()
+                      ])
+                    ])
+                  : _vm._e()
               ])
             ])
           ])
@@ -64414,7 +64413,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h5", { staticClass: "card-title" }, [
+    return _c("span", { staticStyle: { "font-size": "12px" } }, [
       _vm._v("CO"),
       _c("sub", [_vm._v("2")]),
       _vm._v(" Saved")
@@ -64428,9 +64427,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miles")]),
-        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Trip Total")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miles")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("CO2 Saved")]),
         _vm._v(" "),
@@ -64449,15 +64448,15 @@ if (false) {
 }
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(175)
+var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(176)
+var __vue_template__ = __webpack_require__(177)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64496,7 +64495,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64634,7 +64633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65129,15 +65128,15 @@ if (false) {
 }
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(178)
+var __vue_script__ = __webpack_require__(179)
 /* template */
-var __vue_template__ = __webpack_require__(179)
+var __vue_template__ = __webpack_require__(180)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65176,7 +65175,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65348,7 +65347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65822,15 +65821,15 @@ if (false) {
 }
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(181)
+var __vue_script__ = __webpack_require__(182)
 /* template */
-var __vue_template__ = __webpack_require__(182)
+var __vue_template__ = __webpack_require__(183)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65869,7 +65868,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66068,7 +66067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66665,15 +66664,15 @@ if (false) {
 }
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(184)
+var __vue_script__ = __webpack_require__(185)
 /* template */
-var __vue_template__ = __webpack_require__(185)
+var __vue_template__ = __webpack_require__(186)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66712,7 +66711,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66841,10 +66840,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         // if only one challenge open, have it default as selected
-        if (this.challenges.length <= 1) {
+        if (this.challenges.length > 0) {
+            console.log(this.challenges);
             this.form.challenge_id = this.challenges[0].id;
         }
-        console.log(moment().format('YYYY-MM-D'));
     },
 
     props: {
@@ -66856,16 +66855,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             form: {
-                date: moment().format('YYYY-MM-D'),
+                date: moment().format('YYYY-MM-DD'),
                 challenge_id: "",
                 mode: "",
-                miles: "",
-                dateRange: {
-                    start: "",
-                    end: ""
-                }
+                miles: ""
             },
-            rangey: "",
             trips: this.data.trips,
             challenges: this.data.challenges,
             modes: this.data.modes,
@@ -66876,7 +66870,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addDate: function addDate() {
-            this.dates.push(this.form.date);
+            var currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
+            var nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+            console.log(nextDate);
+            // turn current date back into moment date to then add 1
+            this.dates.push(nextDate);
         },
         addTrip: function addTrip() {
             var _this = this;
@@ -66884,33 +66882,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // add initial form date to dates
             this.dates.unshift(this.form.date);
             this.form.dates = this.dates;
-            console.log(this.form);
-            this.dates = [];
-            axios.post('/trips/add', this.form).then(function (response) {
-                console.log(response.data.payload);
+
+            axios.post("/trips/add", this.form).then(function (response) {
+                _this.trips = response.data.payload;
+                // reset stuff
+                _this.dates = [];
                 _this.form = {
                     date: "",
                     mode: "",
                     miles: "",
                     challenge_id: _this.form.challenge_id
                 };
-                var newTrip = response.data.payload;
-                console.log(_this.activeChallenge);
                 newTrip.challenge = _this.activeChallenge;
-                // need to figure out how to get all trips to show that were just created, with ids
-                _this.trips.push(newTrip);
             }).catch(function (error) {});
         },
         editTrip: function editTrip(trip) {
             this.activeEditId = '';
-            axios.put('/trips/' + trip.id + '/edit-trip', trip).then(function (response) {
+            axios.put("/trips/" + trip.id + "/edit-trip", trip).then(function (response) {
                 console.log(response.data.payload);
             }).catch(function (error) {});
         },
         deleteTrip: function deleteTrip(tripId) {
             var _this2 = this;
 
-            axios.delete('/trips/' + tripId + '/delete-trip').then(function (response) {
+            axios.delete("/trips/" + tripId + "/delete-trip").then(function (response) {
                 // Remove task from tasks array
                 var index = _this2.trips.findIndex(function (x) {
                     return x.id == tripId;
@@ -66930,7 +66925,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67479,31 +67474,495 @@ if (false) {
 }
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 187 */,
 /* 188 */,
 /* 189 */,
 /* 190 */,
-/* 191 */
-/***/ (function(module, exports) {
+/* 191 */,
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports=function(r){var t={};function n(e){if(t[e])return t[e].exports;var o=t[e]={i:e,l:!1,exports:{}};return r[e].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=r,n.c=t,n.d=function(r,t,e){n.o(r,t)||Object.defineProperty(r,t,{enumerable:!0,get:e})},n.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},n.t=function(r,t){if(1&t&&(r=n(r)),8&t)return r;if(4&t&&"object"==typeof r&&r&&r.__esModule)return r;var e=Object.create(null);if(n.r(e),Object.defineProperty(e,"default",{enumerable:!0,value:r}),2&t&&"string"!=typeof r)for(var o in r)n.d(e,o,function(t){return r[t]}.bind(null,o));return e},n.n=function(r){var t=r&&r.__esModule?function(){return r.default}:function(){return r};return n.d(t,"a",t),t},n.o=function(r,t){return Object.prototype.hasOwnProperty.call(r,t)},n.p="",n(n.s=0)}([function(r,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(r){return typeof r}:function(r){return r&&"function"==typeof Symbol&&r.constructor===Symbol&&r!==Symbol.prototype?"symbol":typeof r},o=function(r){return r&&r.__esModule?r:{default:r}}(n(1));var a={install:function(r,t){function n(r){return void 0===r}function a(r){u=n(r.symbol)?"":r.symbol,i=n(r.thousandsSeparator)?".":r.thousandsSeparator,s=n(r.fractionCount)?0:r.fractionCount,c=n(r.fractionSeparator)?",":r.fractionSeparator,f=n(r.symbolPosition)?"front":r.symbolPosition,l=!!n(r.symbolSpacing)||r.symbolSpacing}n(t)&&(t={});var u="",i=".",s=0,c=",",f="front",l=!0;a(t),r.filter("currency",function(r,p,m,d,y,b,v){a(t),"object"===(void 0===p?"undefined":e(p))&&(m=p.thousandsSeparator,d=p.fractionCount,y=p.fractionSeparator,b=p.symbolPosition,v=p.symbolSpacing,p=p.symbol),n(p)||(u=p),n(m)||(i=m),n(d)||(s=d),n(y)||(c=y),n(b)||(f=b),n(v)||(l=v);var g=0,h="-"===String(r).charAt(0);h&&(r=String(r).slice(1));var S=parseFloat(r);isNaN(S)||(g=S);var M="%s%v";return M="front"===f?l?"%s %v":"%s%v":l?"%v %s":"%v%s",s>0&&(r=o.default.toFixed(r,s)),g=o.default.formatMoney(r,{format:M,symbol:u,precision:s,thousand:i,decimal:c}),h&&(g="-"+g),g})}};t.default=a},function(r,t,n){
-/*!
- * accounting.js v0.4.1
- * Copyright 2014 Open Exchange Rates
- *
- * Freely distributable under the MIT license.
- * Portions of accounting.js are inspired or borrowed from underscore.js
- *
- * Full details and documentation:
- * http://openexchangerates.github.io/accounting.js/
- */
-!function(n,e){var o={version:"0.4.1",settings:{currency:{symbol:"$",format:"%s%v",decimal:".",thousand:",",precision:2,grouping:3},number:{precision:0,grouping:3,thousand:",",decimal:"."}}},a=Array.prototype.map,u=Array.isArray,i=Object.prototype.toString;function s(r){return!!(""===r||r&&r.charCodeAt&&r.substr)}function c(r){return u?u(r):"[object Array]"===i.call(r)}function f(r){return r&&"[object Object]"===i.call(r)}function l(r,t){var n;for(n in r=r||{},t=t||{})t.hasOwnProperty(n)&&null==r[n]&&(r[n]=t[n]);return r}function p(r,t,n){var e,o,u=[];if(!r)return u;if(a&&r.map===a)return r.map(t,n);for(e=0,o=r.length;e<o;e++)u[e]=t.call(n,r[e],e,r);return u}function m(r,t){return r=Math.round(Math.abs(r)),isNaN(r)?t:r}function d(r){var t=o.settings.currency.format;return"function"==typeof r&&(r=r()),s(r)&&r.match("%v")?{pos:r,neg:r.replace("-","").replace("%v","-%v"),zero:r}:r&&r.pos&&r.pos.match("%v")?r:s(t)?o.settings.currency.format={pos:t,neg:t.replace("%v","-%v"),zero:t}:t}var y=o.unformat=o.parse=function(r,t){if(c(r))return p(r,function(r){return y(r,t)});if("number"==typeof(r=r||0))return r;t=t||o.settings.number.decimal;var n=new RegExp("[^0-9-"+t+"]",["g"]),e=parseFloat((""+r).replace(/\((.*)\)/,"-$1").replace(n,"").replace(t,"."));return isNaN(e)?0:e},b=o.toFixed=function(r,t){t=m(t,o.settings.number.precision);var n=Math.pow(10,t);return(Math.round(o.unformat(r)*n)/n).toFixed(t)},v=o.formatNumber=o.format=function(r,t,n,e){if(c(r))return p(r,function(r){return v(r,t,n,e)});r=y(r);var a=l(f(t)?t:{precision:t,thousand:n,decimal:e},o.settings.number),u=m(a.precision),i=r<0?"-":"",s=parseInt(b(Math.abs(r||0),u),10)+"",d=s.length>3?s.length%3:0;return i+(d?s.substr(0,d)+a.thousand:"")+s.substr(d).replace(/(\d{3})(?=\d)/g,"$1"+a.thousand)+(u?a.decimal+b(Math.abs(r),u).split(".")[1]:"")},g=o.formatMoney=function(r,t,n,e,a,u){if(c(r))return p(r,function(r){return g(r,t,n,e,a,u)});r=y(r);var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),s=d(i.format);return(r>0?s.pos:r<0?s.neg:s.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal))};o.formatColumn=function(r,t,n,e,a,u){if(!r)return[];var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),b=d(i.format),g=b.pos.indexOf("%s")<b.pos.indexOf("%v"),h=0;return p(p(r,function(r,t){if(c(r))return o.formatColumn(r,i);var n=((r=y(r))>0?b.pos:r<0?b.neg:b.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal));return n.length>h&&(h=n.length),n}),function(r,t){return s(r)&&r.length<h?g?r.replace(i.symbol,i.symbol+new Array(h-r.length+1).join(" ")):new Array(h-r.length+1).join(" ")+r:r})},void 0!==r&&r.exports&&(t=r.exports=o),t.accounting=o}()}]);
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(193)
+/* template */
+var __vue_template__ = __webpack_require__(194)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CompaniesLeaderboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-532d6859", Component.options)
+  } else {
+    hotAPI.reload("data-v-532d6859", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 193 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+
+    props: {
+        data: {
+            type: Object,
+            required: false
+        }
+    },
+    data: function data() {
+        return {
+            companies: this.data.companies,
+            modes: this.data.modes,
+            challenge: this.data.challenge,
+            filtered: 'unfiltered',
+            totalMiles: 0,
+            coSaved: 0,
+            moneySaved: 0,
+            searchName: '',
+            totals: {
+                miles: 0,
+                co: 0,
+                money: 0
+            },
+            loading: false
+        };
+    },
+
+    methods: {
+        calculateTotals: function calculateTotals(companies) {
+            this.totals = {
+                miles: _.sumBy(companies, 'totals.miles'),
+                co: _.sumBy(companies, 'totals.co'),
+                money: _.sumBy(companies, 'totals.money')
+            };
+        }
+    },
+    computed: {
+        sumTrips: function sumTrips() {
+            this.loading = true;
+            var companies = this.companies;
+            var filtered = this.filtered;
+            this.totals = {
+                miles: 0,
+                co: 0,
+                money: 0
+            };
+            var searchName = this.searchName;
+            if (searchName) {
+                companies = _.filter(companies, function (company) {
+                    return company.name.indexOf(searchName) != -1;
+                });
+            }
+            _.forEach(companies, function (company) {
+                _.forEach(company.users, function (user) {
+                    var trips = user.trips;
+                    // trying to add filter by mode
+                    if (filtered != 'unfiltered') {
+                        user.filtered_trips = _.filter(user.trips, function (trip) {
+                            return trip.mode == filtered;
+                        });
+                    } else {
+                        user.filtered_trips = user.trips;
+                    }
+                    user.trips = trips;
+                    user.total_miles = _.sumBy(user.filtered_trips, 'miles');
+                    user.total_trips = user.filtered_trips.length;
+                    user.total_saved = _.round(user.total_miles * 0.9195);
+                    user.total_money = _.round(user.total_miles * 0.57);
+                });
+                company.totals = {
+                    miles: _.sumBy(company.users, 'total_miles'),
+                    co: _.sumBy(company.users, 'total_saved'),
+                    money: _.sumBy(company.users, 'total_money'),
+                    trips: _.sumBy(company.users, 'total_trips')
+                };
+
+                // tripcount / employees to set per capita
+                company.totals.capita = company.totals.trips / company.users.length;
+            });
+
+            this.calculateTotals(companies);
+
+            this.loading = false;
+            // order by per capita
+            return _.orderBy(companies, ['totals.capital'], ['desc']);
+        }
+    }
+});
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 mx-auto" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: _vm.challenge.image_url, alt: _vm.challenge.name }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "mx-auto col-sm-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm.totals.miles))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Miles Saved")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm.totals.co) + " lbs")
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm._f("currency")(_vm.totals.money)))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Saved")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                !_vm.loading
+                  ? _c("div", { staticClass: "container" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group row justify-content-end" },
+                        [
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchName,
+                                  expression: "searchName"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "search",
+                                id: "search",
+                                placeholder: "Search by Name"
+                              },
+                              domProps: { value: _vm.searchName },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchName = $event.target.value
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filtered,
+                                    expression: "filtered"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { id: "filtered" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.filtered = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: { selected: "", value: "unfiltered" }
+                                  },
+                                  [_vm._v("Filter by Mode")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.modes, function(mode) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: mode } },
+                                    [_vm._v(_vm._s(mode))]
+                                  )
+                                })
+                              ],
+                              2
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row table-responsive-sm" }, [
+                        _vm.sumTrips.length > 0
+                          ? _c("table", { staticClass: "table leaderboard" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.sumTrips, function(company) {
+                                  return _c("tr", [
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.name)),
+                                      _c("br"),
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { "font-size": "12px" }
+                                        },
+                                        [_vm._v(_vm._s(company.size))]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.trips))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(company.totals.miles) + "mi"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.capita))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.co) + "lbs")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm._f("currency")(
+                                            company.totals.money
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ])
+                                })
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.sumTrips.length <= 0
+                          ? _c("p", [_vm._v("No trips found.")])
+                          : _vm._e()
+                      ])
+                    ])
+                  : _vm._e()
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "font-size": "12px" } }, [
+      _vm._v("CO"),
+      _c("sub", [_vm._v("2")]),
+      _vm._v(" Saved")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Company")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Trip Total")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miles")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Per Capita")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("CO2 Saved")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Money Saved")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-532d6859", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

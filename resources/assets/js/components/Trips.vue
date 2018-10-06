@@ -121,6 +121,7 @@
 <script>
 export default {
   mounted() {
+      console.log(this.challenges);
       // if only one challenge open, have it default as selected
       if (this.challenges.length > 0) {
           console.log(this.challenges);

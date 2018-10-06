@@ -30492,8 +30492,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_currency_filter___default.a, {
  */
 
 // Leaderboards
-Vue.component('leaderboard', __webpack_require__(172));
-Vue.component('companies-leaderboard', __webpack_require__(192));
+Vue.component('leaderboard', __webpack_require__(169));
+Vue.component('companies-leaderboard', __webpack_require__(172));
 
 Vue.component('profile', __webpack_require__(175));
 Vue.component('companies', __webpack_require__(178));
@@ -63989,18 +63989,15 @@ module.exports=function(r){var t={};function n(e){if(t[e])return t[e].exports;va
 !function(n,e){var o={version:"0.4.1",settings:{currency:{symbol:"$",format:"%s%v",decimal:".",thousand:",",precision:2,grouping:3},number:{precision:0,grouping:3,thousand:",",decimal:"."}}},a=Array.prototype.map,u=Array.isArray,i=Object.prototype.toString;function s(r){return!!(""===r||r&&r.charCodeAt&&r.substr)}function c(r){return u?u(r):"[object Array]"===i.call(r)}function f(r){return r&&"[object Object]"===i.call(r)}function l(r,t){var n;for(n in r=r||{},t=t||{})t.hasOwnProperty(n)&&null==r[n]&&(r[n]=t[n]);return r}function p(r,t,n){var e,o,u=[];if(!r)return u;if(a&&r.map===a)return r.map(t,n);for(e=0,o=r.length;e<o;e++)u[e]=t.call(n,r[e],e,r);return u}function m(r,t){return r=Math.round(Math.abs(r)),isNaN(r)?t:r}function d(r){var t=o.settings.currency.format;return"function"==typeof r&&(r=r()),s(r)&&r.match("%v")?{pos:r,neg:r.replace("-","").replace("%v","-%v"),zero:r}:r&&r.pos&&r.pos.match("%v")?r:s(t)?o.settings.currency.format={pos:t,neg:t.replace("%v","-%v"),zero:t}:t}var y=o.unformat=o.parse=function(r,t){if(c(r))return p(r,function(r){return y(r,t)});if("number"==typeof(r=r||0))return r;t=t||o.settings.number.decimal;var n=new RegExp("[^0-9-"+t+"]",["g"]),e=parseFloat((""+r).replace(/\((.*)\)/,"-$1").replace(n,"").replace(t,"."));return isNaN(e)?0:e},b=o.toFixed=function(r,t){t=m(t,o.settings.number.precision);var n=Math.pow(10,t);return(Math.round(o.unformat(r)*n)/n).toFixed(t)},v=o.formatNumber=o.format=function(r,t,n,e){if(c(r))return p(r,function(r){return v(r,t,n,e)});r=y(r);var a=l(f(t)?t:{precision:t,thousand:n,decimal:e},o.settings.number),u=m(a.precision),i=r<0?"-":"",s=parseInt(b(Math.abs(r||0),u),10)+"",d=s.length>3?s.length%3:0;return i+(d?s.substr(0,d)+a.thousand:"")+s.substr(d).replace(/(\d{3})(?=\d)/g,"$1"+a.thousand)+(u?a.decimal+b(Math.abs(r),u).split(".")[1]:"")},g=o.formatMoney=function(r,t,n,e,a,u){if(c(r))return p(r,function(r){return g(r,t,n,e,a,u)});r=y(r);var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),s=d(i.format);return(r>0?s.pos:r<0?s.neg:s.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal))};o.formatColumn=function(r,t,n,e,a,u){if(!r)return[];var i=l(f(t)?t:{symbol:t,precision:n,thousand:e,decimal:a,format:u},o.settings.currency),b=d(i.format),g=b.pos.indexOf("%s")<b.pos.indexOf("%v"),h=0;return p(p(r,function(r,t){if(c(r))return o.formatColumn(r,i);var n=((r=y(r))>0?b.pos:r<0?b.neg:b.zero).replace("%s",i.symbol).replace("%v",v(Math.abs(r),m(i.precision),i.thousand,i.decimal));return n.length>h&&(h=n.length),n}),function(r,t){return s(r)&&r.length<h?g?r.replace(i.symbol,i.symbol+new Array(h-r.length+1).join(" ")):new Array(h-r.length+1).join(" ")+r:r})},void 0!==r&&r.exports&&(t=r.exports=o),t.accounting=o}()}]);
 
 /***/ }),
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(173)
+var __vue_script__ = __webpack_require__(170)
 /* template */
-var __vue_template__ = __webpack_require__(174)
+var __vue_template__ = __webpack_require__(171)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64039,7 +64036,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 173 */
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64201,7 +64198,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 174 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64444,6 +64441,487 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-19d0d496", module.exports)
+  }
+}
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(173)
+/* template */
+var __vue_template__ = __webpack_require__(174)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CompaniesLeaderboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-532d6859", Component.options)
+  } else {
+    hotAPI.reload("data-v-532d6859", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 173 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+
+    props: {
+        data: {
+            type: Object,
+            required: false
+        }
+    },
+    data: function data() {
+        return {
+            companies: this.data.companies,
+            modes: this.data.modes,
+            challenge: this.data.challenge,
+            filtered: 'unfiltered',
+            totalMiles: 0,
+            coSaved: 0,
+            moneySaved: 0,
+            searchName: '',
+            totals: {
+                miles: 0,
+                co: 0,
+                money: 0
+            },
+            loading: false
+        };
+    },
+
+    methods: {
+        calculateTotals: function calculateTotals(companies) {
+            this.totals = {
+                miles: _.sumBy(companies, 'totals.miles'),
+                co: _.sumBy(companies, 'totals.co'),
+                money: _.sumBy(companies, 'totals.money')
+            };
+        }
+    },
+    computed: {
+        sumTrips: function sumTrips() {
+            this.loading = true;
+            var companies = this.companies;
+            var filtered = this.filtered;
+            this.totals = {
+                miles: 0,
+                co: 0,
+                money: 0
+            };
+            var searchName = this.searchName;
+            if (searchName) {
+                companies = _.filter(companies, function (company) {
+                    return company.name.indexOf(searchName) != -1;
+                });
+            }
+            _.forEach(companies, function (company) {
+                _.forEach(company.users, function (user) {
+                    var trips = user.trips;
+                    // trying to add filter by mode
+                    if (filtered != 'unfiltered') {
+                        user.filtered_trips = _.filter(user.trips, function (trip) {
+                            return trip.mode == filtered;
+                        });
+                    } else {
+                        user.filtered_trips = user.trips;
+                    }
+                    user.trips = trips;
+                    user.total_miles = _.sumBy(user.filtered_trips, 'miles');
+                    user.total_trips = user.filtered_trips.length;
+                    user.total_saved = _.round(user.total_miles * 0.9195);
+                    user.total_money = _.round(user.total_miles * 0.57);
+                });
+                company.totals = {
+                    miles: _.sumBy(company.users, 'total_miles'),
+                    co: _.sumBy(company.users, 'total_saved'),
+                    money: _.sumBy(company.users, 'total_money'),
+                    trips: _.sumBy(company.users, 'total_trips')
+                };
+
+                // tripcount / employees to set per capita
+                company.totals.capita = company.totals.trips / company.users.length;
+            });
+
+            this.calculateTotals(companies);
+
+            this.loading = false;
+            // order by per capita
+            return _.orderBy(companies, ['totals.capital'], ['desc']);
+        }
+    }
+});
+
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 mx-auto" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: _vm.challenge.image_url, alt: _vm.challenge.name }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "mx-auto col-sm-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm.totals.miles))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Miles Saved")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm.totals.co) + " lbs")
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4 total-tile" }, [
+                      _c("h4", { staticClass: "head" }, [
+                        _vm._v(_vm._s(_vm._f("currency")(_vm.totals.money)))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticStyle: { "font-size": "12px" } }, [
+                        _vm._v("Saved")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                !_vm.loading
+                  ? _c("div", { staticClass: "container" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group row justify-content-end" },
+                        [
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchName,
+                                  expression: "searchName"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "search",
+                                id: "search",
+                                placeholder: "Search by Name"
+                              },
+                              domProps: { value: _vm.searchName },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchName = $event.target.value
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filtered,
+                                    expression: "filtered"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { id: "filtered" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.filtered = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: { selected: "", value: "unfiltered" }
+                                  },
+                                  [_vm._v("Filter by Mode")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.modes, function(mode) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: mode } },
+                                    [_vm._v(_vm._s(mode))]
+                                  )
+                                })
+                              ],
+                              2
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row table-responsive-sm" }, [
+                        _vm.sumTrips.length > 0
+                          ? _c("table", { staticClass: "table leaderboard" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.sumTrips, function(company) {
+                                  return _c("tr", [
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.name)),
+                                      _c("br"),
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { "font-size": "12px" }
+                                        },
+                                        [_vm._v(_vm._s(company.size))]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.trips))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(company.totals.miles) + "mi"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.capita))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(company.totals.co) + "lbs")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm._f("currency")(
+                                            company.totals.money
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ])
+                                })
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.sumTrips.length <= 0
+                          ? _c("p", [_vm._v("No trips found.")])
+                          : _vm._e()
+                      ])
+                    ])
+                  : _vm._e()
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "font-size": "12px" } }, [
+      _vm._v("CO"),
+      _c("sub", [_vm._v("2")]),
+      _vm._v(" Saved")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Company")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Trip Total")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miles")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Per Capita")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("CO2 Saved")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Money Saved")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-532d6859", module.exports)
   }
 }
 
@@ -66839,6 +67317,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        console.log(this.challenges);
         // if only one challenge open, have it default as selected
         if (this.challenges.length > 0) {
             console.log(this.challenges);
@@ -67478,491 +67957,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(193)
-/* template */
-var __vue_template__ = __webpack_require__(194)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/CompaniesLeaderboard.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-532d6859", Component.options)
-  } else {
-    hotAPI.reload("data-v-532d6859", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 193 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {},
-
-    props: {
-        data: {
-            type: Object,
-            required: false
-        }
-    },
-    data: function data() {
-        return {
-            companies: this.data.companies,
-            modes: this.data.modes,
-            challenge: this.data.challenge,
-            filtered: 'unfiltered',
-            totalMiles: 0,
-            coSaved: 0,
-            moneySaved: 0,
-            searchName: '',
-            totals: {
-                miles: 0,
-                co: 0,
-                money: 0
-            },
-            loading: false
-        };
-    },
-
-    methods: {
-        calculateTotals: function calculateTotals(companies) {
-            this.totals = {
-                miles: _.sumBy(companies, 'totals.miles'),
-                co: _.sumBy(companies, 'totals.co'),
-                money: _.sumBy(companies, 'totals.money')
-            };
-        }
-    },
-    computed: {
-        sumTrips: function sumTrips() {
-            this.loading = true;
-            var companies = this.companies;
-            var filtered = this.filtered;
-            this.totals = {
-                miles: 0,
-                co: 0,
-                money: 0
-            };
-            var searchName = this.searchName;
-            if (searchName) {
-                companies = _.filter(companies, function (company) {
-                    return company.name.indexOf(searchName) != -1;
-                });
-            }
-            _.forEach(companies, function (company) {
-                _.forEach(company.users, function (user) {
-                    var trips = user.trips;
-                    // trying to add filter by mode
-                    if (filtered != 'unfiltered') {
-                        user.filtered_trips = _.filter(user.trips, function (trip) {
-                            return trip.mode == filtered;
-                        });
-                    } else {
-                        user.filtered_trips = user.trips;
-                    }
-                    user.trips = trips;
-                    user.total_miles = _.sumBy(user.filtered_trips, 'miles');
-                    user.total_trips = user.filtered_trips.length;
-                    user.total_saved = _.round(user.total_miles * 0.9195);
-                    user.total_money = _.round(user.total_miles * 0.57);
-                });
-                company.totals = {
-                    miles: _.sumBy(company.users, 'total_miles'),
-                    co: _.sumBy(company.users, 'total_saved'),
-                    money: _.sumBy(company.users, 'total_money'),
-                    trips: _.sumBy(company.users, 'total_trips')
-                };
-
-                // tripcount / employees to set per capita
-                company.totals.capita = company.totals.trips / company.users.length;
-            });
-
-            this.calculateTotals(companies);
-
-            this.loading = false;
-            // order by per capita
-            return _.orderBy(companies, ['totals.capital'], ['desc']);
-        }
-    }
-});
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12 mx-auto" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: { src: _vm.challenge.image_url, alt: _vm.challenge.name }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "mx-auto col-sm-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _c("div", { staticClass: "container" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-4 total-tile" }, [
-                      _c("h4", { staticClass: "head" }, [
-                        _vm._v(_vm._s(_vm.totals.miles))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticStyle: { "font-size": "12px" } }, [
-                        _vm._v("Miles Saved")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-4 total-tile" }, [
-                      _c("h4", { staticClass: "head" }, [
-                        _vm._v(_vm._s(_vm.totals.co) + " lbs")
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(0)
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-4 total-tile" }, [
-                      _c("h4", { staticClass: "head" }, [
-                        _vm._v(_vm._s(_vm._f("currency")(_vm.totals.money)))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticStyle: { "font-size": "12px" } }, [
-                        _vm._v("Saved")
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                !_vm.loading
-                  ? _c("div", { staticClass: "container" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group row justify-content-end" },
-                        [
-                          _c("div", { staticClass: "col-sm-3" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.searchName,
-                                  expression: "searchName"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "search",
-                                id: "search",
-                                placeholder: "Search by Name"
-                              },
-                              domProps: { value: _vm.searchName },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.searchName = $event.target.value
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-3" }, [
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.filtered,
-                                    expression: "filtered"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { id: "filtered" },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.filtered = $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  {
-                                    attrs: { selected: "", value: "unfiltered" }
-                                  },
-                                  [_vm._v("Filter by Mode")]
-                                ),
-                                _vm._v(" "),
-                                _vm._l(_vm.modes, function(mode) {
-                                  return _c(
-                                    "option",
-                                    { domProps: { value: mode } },
-                                    [_vm._v(_vm._s(mode))]
-                                  )
-                                })
-                              ],
-                              2
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row table-responsive-sm" }, [
-                        _vm.sumTrips.length > 0
-                          ? _c("table", { staticClass: "table leaderboard" }, [
-                              _vm._m(1),
-                              _vm._v(" "),
-                              _c(
-                                "tbody",
-                                _vm._l(_vm.sumTrips, function(company) {
-                                  return _c("tr", [
-                                    _c("td", [
-                                      _vm._v(_vm._s(company.name)),
-                                      _c("br"),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "font-size": "12px" }
-                                        },
-                                        [_vm._v(_vm._s(company.size))]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(company.totals.trips))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(company.totals.miles) + "mi"
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(company.totals.capita))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(company.totals.co) + "lbs")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm._f("currency")(
-                                            company.totals.money
-                                          )
-                                        )
-                                      )
-                                    ])
-                                  ])
-                                })
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.sumTrips.length <= 0
-                          ? _c("p", [_vm._v("No trips found.")])
-                          : _vm._e()
-                      ])
-                    ])
-                  : _vm._e()
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { "font-size": "12px" } }, [
-      _vm._v("CO"),
-      _c("sub", [_vm._v("2")]),
-      _vm._v(" Saved")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Company")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Trip Total")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miles")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Per Capita")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("CO2 Saved")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Money Saved")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-532d6859", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

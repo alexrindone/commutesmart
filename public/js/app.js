@@ -67445,306 +67445,330 @@ var render = function() {
       _c("div", { staticClass: "container py-3" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "mx-auto col-sm-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "form",
-                  {
-                    staticClass: "form",
-                    attrs: { role: "form", autocomplete: "off" }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "col-lg-3 col-form-label form-control-label"
-                        },
-                        [_vm._v("Challenge")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-9" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.challenge_id,
-                                expression: "form.challenge_id"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { id: "size" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "challenge_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          _vm._l(_vm.challenges, function(challenge) {
-                            return _c(
-                              "option",
-                              { domProps: { value: challenge.id } },
-                              [_vm._v(_vm._s(challenge.name))]
-                            )
-                          })
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "col-lg-3 col-form-label form-control-label"
-                        },
-                        [_vm._v("Mode of Transportation")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-9" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.mode,
-                                expression: "form.mode"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { id: "size" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "mode",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          _vm._l(_vm.modes, function(mode) {
-                            return _c("option", { domProps: { value: mode } }, [
-                              _vm._v(_vm._s(mode))
-                            ])
-                          })
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "col-lg-3 col-form-label form-control-label"
-                        },
-                        [_vm._v("Miles Traveled (Round Trip)")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-9" }, [
-                        _c("input", {
-                          directives: [
+            _vm.activeChallenge
+              ? _c("div", { staticClass: "card" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form",
+                        attrs: { role: "form", autocomplete: "off" }
+                      },
+                      [
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
                             {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.miles,
-                              expression: "form.miles"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "number" },
-                          domProps: { value: _vm.form.miles },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "miles", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "col-lg-3 col-form-label form-control-label"
-                        },
-                        [_vm._v("Trip Date(s)")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-6" }, [
-                        _c("div", [
-                          _c("input", {
-                            directives: [
+                              staticClass:
+                                "col-lg-3 col-form-label form-control-label"
+                            },
+                            [_vm._v("Challenge")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-9" }, [
+                            _c(
+                              "select",
                               {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.date,
-                                expression: "form.date"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "date" },
-                            domProps: { value: _vm.form.date },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.challenge_id,
+                                    expression: "form.challenge_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { id: "size" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "challenge_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
                                 }
-                                _vm.$set(_vm.form, "date", $event.target.value)
-                              }
-                            }
-                          })
+                              },
+                              _vm._l(_vm.challenges, function(challenge) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: challenge.id } },
+                                  [_vm._v(_vm._s(challenge.name))]
+                                )
+                              })
+                            )
+                          ])
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          _vm._l(_vm.dates, function(date, key) {
-                            return _vm.dates && _vm.dates.length > 0
-                              ? _c(
-                                  "div",
-                                  { staticStyle: { display: "flex" } },
-                                  [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.dates[key],
-                                          expression: "dates[key]"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      attrs: { type: "date" },
-                                      domProps: { value: _vm.dates[key] },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.dates,
-                                            key,
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-secondary",
-                                        attrs: {
-                                          type: "button",
-                                          "aria-label": "Close"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.removeDate(key)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("×")]
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-lg-3 col-form-label form-control-label"
+                            },
+                            [_vm._v("Mode of Transportation")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-9" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.mode,
+                                    expression: "form.mode"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { id: "size" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "mode",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
                                     )
-                                  ]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.modes, function(mode) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: mode } },
+                                  [_vm._v(_vm._s(mode))]
                                 )
-                              : _vm._e()
-                          })
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-3" }, [
-                        _c("input", {
-                          staticClass: "btn btn-primary",
-                          attrs: {
-                            disabled: _vm.addDayDisabled,
-                            type: "button",
-                            value: "Add Day"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.addDate()
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c("label", {
-                        staticClass:
-                          "col-lg-3 col-form-label form-control-label"
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-9" }, [
-                        _c("input", {
-                          staticClass: "btn btn-secondary",
-                          attrs: { type: "reset", value: "Cancel" },
-                          on: {
-                            click: function($event) {
-                              _vm.resetForm()
-                            }
-                          }
-                        }),
+                              })
+                            )
+                          ])
+                        ]),
                         _vm._v(" "),
-                        _c("input", {
-                          staticClass: "btn btn-primary",
-                          attrs: {
-                            disabled:
-                              _vm.form.miles == "" || _vm.form.mode == "",
-                            type: "button",
-                            value: "Submit"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.addTrip()
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-lg-3 col-form-label form-control-label"
+                            },
+                            [_vm._v("Miles Traveled (Round Trip)")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-9" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.miles,
+                                  expression: "form.miles"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { type: "number" },
+                              domProps: { value: _vm.form.miles },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "miles",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-lg-3 col-form-label form-control-label"
+                            },
+                            [_vm._v("Trip Date(s)")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-6" }, [
+                            _c("div", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.date,
+                                    expression: "form.date"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  min: _vm.activeChallenge.start_date,
+                                  max: _vm.activeChallenge.end_date,
+                                  type: "date"
+                                },
+                                domProps: { value: _vm.form.date },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      "date",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              _vm._l(_vm.dates, function(date, key) {
+                                return _vm.dates && _vm.dates.length > 0
+                                  ? _c(
+                                      "div",
+                                      { staticStyle: { display: "flex" } },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.dates[key],
+                                              expression: "dates[key]"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          attrs: {
+                                            min: _vm.activeChallenge.start_date,
+                                            max: _vm.activeChallenge.end_date,
+                                            type: "date"
+                                          },
+                                          domProps: { value: _vm.dates[key] },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.dates,
+                                                key,
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-secondary",
+                                            attrs: {
+                                              type: "button",
+                                              "aria-label": "Close"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.removeDate(key)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("×")]
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              })
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("input", {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                disabled:
+                                  _vm.addDayDisabled ||
+                                  _vm.form.date == _vm.activeChallenge.end_date,
+                                type: "button",
+                                value: "Add Day"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.addDate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c("label", {
+                            staticClass:
+                              "col-lg-3 col-form-label form-control-label"
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-9" }, [
+                            _c("input", {
+                              staticClass: "btn btn-secondary",
+                              attrs: { type: "reset", value: "Cancel" },
+                              on: {
+                                click: function($event) {
+                                  _vm.resetForm()
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                disabled:
+                                  _vm.form.miles == "" || _vm.form.mode == "",
+                                type: "button",
+                                value: "Submit"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.addTrip()
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e()
           ])
         ])
       ]),

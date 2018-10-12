@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="mx-auto col-sm-12">
                         <!-- form user info -->
-                        <div class="card">
+                        <div class="card" v-if="activeChallenge">
                             <div class="card-header">
                                 <h4 class="mb-0">Add Trip</h4>
                             </div>
@@ -37,17 +37,17 @@
                                         <label class="col-lg-3 col-form-label form-control-label">Trip Date(s)</label>
                                         <div class="col-lg-6">
                                             <div>
-                                                <input class="form-control" type="date" v-model="form.date">
+                                                <input :min="activeChallenge.start_date" :max="activeChallenge.end_date" class="form-control" type="date" v-model="form.date">
                                             </div>
                                             <div>
                                                 <div v-for="(date, key) in dates" v-if="dates && dates.length > 0" style="display:flex;">
-                                                    <input class="form-control" type="date" v-model="dates[key]">
+                                                    <input :min="activeChallenge.start_date" :max="activeChallenge.end_date" class="form-control" type="date" v-model="dates[key]">
                                                     <button v-on:click="removeDate(key)" type="button" class="btn btn-secondary" aria-label="Close">&times;</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input :disabled="addDayDisabled" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
+                                            <input :disabled="addDayDisabled || form.date == activeChallenge.end_date" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
                                         </div>
                                     </div>
                                     <div class="form-group row">

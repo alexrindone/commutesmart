@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'state' => $data['state'],
             'city' => $data['city'],
             'zip' => $data['zip'],
-            'commutesmart_frequency' => $data['zip'],
+            'commutesmart_frequency' => $data['commutesmart_frequency'],
             'company_id' => $data['company_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

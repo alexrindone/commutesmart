@@ -56,7 +56,7 @@ class ProfileController extends Controller
 		}
 	
 		// Fail
-		return response()->json(['status' => false, 'message' => 'An error occured adding the company', 'payload' => []]);
+		return response()->json(['status' => false, 'message' => 'An error occured updating profile', 'payload' => []]);
 
     }
 }

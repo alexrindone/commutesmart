@@ -40,6 +40,23 @@
                         </div>
                         <!-- New Fields-->
                         <div class="form-group row">
+                            <label for="company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="company_id" type="string" class="form-control{{ $errors->has('company_id') ? ' is-invalid' : '' }}" name="company_id" value="{{ old('company_id') }}" required>
+                                    <option default value="">Please Select</option>
+                                    @foreach(App\Company::get() as $company)
+                                    <option value="{{$company->id}}">{{$company->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('company_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('company_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street Address') }}</label>
 
                             <div class="col-md-6">
@@ -108,6 +125,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <!-- End New Fields -->
 
                         <div class="form-group row">

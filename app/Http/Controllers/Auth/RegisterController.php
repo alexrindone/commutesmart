@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/trips';
 
     /**
      * Create a new controller instance.
@@ -46,6 +47,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -56,6 +58,7 @@ class RegisterController extends Controller
             'city'     => 'required|string|max:30',
             'state'    => 'required|string|max:2',
             'zip'      => 'required|string|max:6',
+            'company_id'  => 'required',
             'commutesmart_frequency' => 'required|string|max:255'
         ]);
     }
@@ -76,6 +79,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'zip' => $data['zip'],
             'commutesmart_frequency' => $data['zip'],
+            'company_id' => $data['company_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

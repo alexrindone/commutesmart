@@ -67314,13 +67314,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        console.log(this.challenges);
         // if only one challenge open, have it default as selected
         if (this.challenges.length > 0) {
-            console.log(this.challenges);
             this.form.challenge_id = this.challenges[0].id;
         }
     },
@@ -67343,35 +67344,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             challenges: this.data.challenges,
             modes: this.data.modes,
             activeEditId: "",
-            dates: []
+            dates: [],
+            addDayDisabled: false
         };
     },
 
     methods: {
+        resetForm: function resetForm() {
+            this.dates = [];
+            this.form = {
+                date: moment().format('YYYY-MM-DD'),
+                mode: "",
+                miles: "",
+                challenge_id: this.form.challenge_id
+            };
+        },
+        removeDate: function removeDate(key) {
+            // Remove task from tasks array
+            this.dates.splice(key, 1);
+        },
         addDate: function addDate() {
-            var currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
-            var nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-            console.log(nextDate);
-            // turn current date back into moment date to then add 1
-            this.dates.push(nextDate);
+            this.validateDates();
+            if (!this.addDayDisabled) {
+                var currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
+                var nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+                // turn current date back into moment date to then add 1
+                this.dates.push(nextDate);
+            }
         },
         addTrip: function addTrip() {
             var _this = this;
 
+            this.validateDates();
             // add initial form date to dates
             this.dates.unshift(this.form.date);
+
+            // filter out dates that are past a week
+            this.dates = _.filter(this.dates, function (date) {
+                var nowPlusWeek = moment().add(7, 'days').format('X');
+                var currentDate = moment(date).format('X');
+                return currentDate <= nowPlusWeek;
+            });
+
             this.form.dates = this.dates;
+            this.dates = [];
 
             axios.post("/trips/add", this.form).then(function (response) {
                 _this.trips = response.data.payload;
                 // reset stuff
-                _this.dates = [];
-                _this.form = {
-                    date: "",
-                    mode: "",
-                    miles: "",
-                    challenge_id: _this.form.challenge_id
-                };
+                _this.resetForm();
                 newTrip.challenge = _this.activeChallenge;
             }).catch(function (error) {});
         },
@@ -67391,6 +67412,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 _this2.trips.splice(index, 1);
             }).catch(function (error) {});
+        },
+        validateDates: function validateDates() {
+            // make sure a date wasn't added that was a week out, if it was disabled the addDay button
+            var dates = this.dates;
+            var nowPlusWeek = moment().add(7, 'days').format('YYYY-MM-DD');
+            if (dates.indexOf(nowPlusWeek) != -1) {
+                this.addDayDisabled = true;
+            }
         }
     },
     computed: {
@@ -67605,44 +67634,71 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _vm.dates && _vm.dates.length > 0
-                          ? _c(
-                              "div",
-                              _vm._l(_vm.dates, function(date, key) {
-                                return _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.dates[key],
-                                      expression: "dates[key]"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "date" },
-                                  domProps: { value: _vm.dates[key] },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
+                        _c(
+                          "div",
+                          _vm._l(_vm.dates, function(date, key) {
+                            return _vm.dates && _vm.dates.length > 0
+                              ? _c(
+                                  "div",
+                                  { staticStyle: { display: "flex" } },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.dates[key],
+                                          expression: "dates[key]"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { type: "date" },
+                                      domProps: { value: _vm.dates[key] },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.dates,
+                                            key,
+                                            $event.target.value
+                                          )
+                                        }
                                       }
-                                      _vm.$set(
-                                        _vm.dates,
-                                        key,
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              })
-                            )
-                          : _vm._e()
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-secondary",
+                                        attrs: {
+                                          type: "button",
+                                          "aria-label": "Close"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.removeDate(key)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("×")]
+                                    )
+                                  ]
+                                )
+                              : _vm._e()
+                          })
+                        )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-lg-3" }, [
                         _c("input", {
                           staticClass: "btn btn-primary",
-                          attrs: { type: "button", value: "Add Day" },
+                          attrs: {
+                            disabled: _vm.addDayDisabled,
+                            type: "button",
+                            value: "Add Day"
+                          },
                           on: {
                             click: function($event) {
                               _vm.addDate()
@@ -67661,7 +67717,12 @@ var render = function() {
                       _c("div", { staticClass: "col-lg-9" }, [
                         _c("input", {
                           staticClass: "btn btn-secondary",
-                          attrs: { type: "reset", value: "Cancel" }
+                          attrs: { type: "reset", value: "Cancel" },
+                          on: {
+                            click: function($event) {
+                              _vm.resetForm()
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("input", {

@@ -39,18 +39,21 @@
                                             <div>
                                                 <input class="form-control" type="date" v-model="form.date">
                                             </div>
-                                            <div v-if="dates && dates.length > 0">
-                                                <input v-for="(date, key) in dates" class="form-control" type="date" v-model="dates[key]">
+                                            <div>
+                                                <div v-for="(date, key) in dates" v-if="dates && dates.length > 0" style="display:flex;">
+                                                    <input class="form-control" type="date" v-model="dates[key]">
+                                                    <button v-on:click="removeDate(key)" type="button" class="btn btn-secondary" aria-label="Close">&times;</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
+                                            <input :disabled="addDayDisabled" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
-                                            <input type="reset" class="btn btn-secondary" value="Cancel">
+                                            <input v-on:click="resetForm()" type="reset" class="btn btn-secondary" value="Cancel">
                                             <input :disabled="form.miles == '' || form.mode == ''" v-on:click="addTrip()" type="button" class="btn btn-primary" value="Submit">
                                         </div>
                                     </div>
@@ -121,10 +124,8 @@
 <script>
 export default {
   mounted() {
-      console.log(this.challenges);
       // if only one challenge open, have it default as selected
       if (this.challenges.length > 0) {
-          console.log(this.challenges);
           this.form.challenge_id = this.challenges[0].id;
       }
   },
@@ -146,34 +147,54 @@ export default {
       challenges: this.data.challenges,
       modes: this.data.modes,
       activeEditId: "",
-      dates: []
+      dates: [],
+      addDayDisabled: false
     };
   },
   methods: {
+    resetForm() {
+        this.dates = [];
+        this.form = {
+            date: moment().format('YYYY-MM-DD'),
+            mode: "",
+            miles: "",
+            challenge_id: this.form.challenge_id
+        };
+    },
+    removeDate(key) {
+        // Remove task from tasks array
+        this.dates.splice(key, 1);
+    },
     addDate() {
-        let currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
-        let nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-        console.log(nextDate);
-        // turn current date back into moment date to then add 1
-        this.dates.push(nextDate);
+        this.validateDates();
+        if (!this.addDayDisabled) {
+            let currentDate = this.dates.length == 0 ? this.form.date : _.last(this.dates);
+            let nextDate = moment(currentDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+            // turn current date back into moment date to then add 1
+            this.dates.push(nextDate);
+        }
     },
     addTrip() {
+        this.validateDates();
         // add initial form date to dates
         this.dates.unshift(this.form.date);
+
+        // filter out dates that are past a week
+        this.dates = _.filter(this.dates, function(date){
+            let nowPlusWeek = moment().add(7, 'days').format('X');
+            let currentDate = moment(date).format('X');
+            return currentDate <= nowPlusWeek;
+        });
+
         this.form.dates = this.dates;
+        this.dates = [];
         
       axios
         .post(`/trips/add`, this.form)
         .then(response => {
             this.trips = response.data.payload;
             // reset stuff
-            this.dates = [];
-            this.form = {
-                date: "",
-                mode: "",
-                miles: "",
-                challenge_id: this.form.challenge_id
-            };
+            this.resetForm();
             newTrip.challenge = this.activeChallenge;
         })
         .catch(error => {});
@@ -200,7 +221,14 @@ export default {
                    
                 });
     },
-    
+    validateDates() {
+        // make sure a date wasn't added that was a week out, if it was disabled the addDay button
+        let dates = this.dates;
+        let nowPlusWeek = moment().add(7, 'days').format('YYYY-MM-DD');
+        if (dates.indexOf(nowPlusWeek) != -1) {
+            this.addDayDisabled = true;
+        }
+    }
   },
   computed: {
         activeChallenge() {

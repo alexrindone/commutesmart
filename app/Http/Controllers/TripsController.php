@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use App\Mail\LogMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Trip;
@@ -58,6 +60,10 @@ class TripsController extends Controller
         })->toArray();
         $created = Trip::insert($tripsToAdd);
         if ($created) {
+            // check if it's their first set of trips, if it is send a thank you for logging their first trip
+            if ($form['first_trips']) {
+                Mail::to(Auth::user()->email)->send(new LogMail(Auth::user()));
+            }
             // get all trips
             $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date')->get();
 			// Success

@@ -148,7 +148,8 @@ export default {
       modes: this.data.modes,
       activeEditId: "",
       dates: [],
-      addDayDisabled: false
+      addDayDisabled: false,
+      firstTrips: this.data.trips.length > 0 ? false : true
     };
   },
   methods: {
@@ -188,6 +189,8 @@ export default {
 
         this.form.dates = this.dates;
         this.dates = [];
+        // pass in whether or not these are the first set of trips so that the user can be notified
+        this.form.first_trips = this.firstTrips;
         
       axios
         .post(`/trips/add`, this.form)

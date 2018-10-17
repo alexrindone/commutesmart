@@ -67345,7 +67345,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             modes: this.data.modes,
             activeEditId: "",
             dates: [],
-            addDayDisabled: false
+            addDayDisabled: false,
+            firstTrips: this.data.trips.length > 0 ? false : true
         };
     },
 
@@ -67388,6 +67389,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.form.dates = this.dates;
             this.dates = [];
+            // pass in whether or not these are the first set of trips so that the user can be notified
+            this.form.first_trips = this.firstTrips;
 
             axios.post("/trips/add", this.form).then(function (response) {
                 _this.trips = response.data.payload;

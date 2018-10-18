@@ -38,7 +38,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Add Challenge
-
         $challenge = Challenge::create([
             'name' => 'Conquer the Cold 2018',
             'slug' => 'conquer',
@@ -47,18 +46,5 @@ class DatabaseSeeder extends Seeder
             'type' => 'individual',
             'image_url' => '/images/conquer-the-cold-banner.png'
         ]);
-        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-        // loop through and create 6000 trips
-            $trips = [];
-            for ($i=0; $i < 6000; $i++) {
-                $trips[] = [
-                    'mode' => $modes[array_rand($modes, 1)],
-                    'date' => '2018-11-10',
-                    'miles' => rand(10, 30) - 5,
-                    'challenge_id' => $challenge->id,
-                    'user_id' => $general_user->id
-                ]; 
-            }
-        $trips = Trip::insert($trips);
     }
 }

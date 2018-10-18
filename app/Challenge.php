@@ -12,7 +12,20 @@ class Challenge extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'start_date', 'end_date', 'type', 'image_url'
+        'name', 
+        'slug', 
+        'start_date', 
+        'end_date', 
+        'type', 
+        'image_url', 
+        'level_one_icon', 
+        'level_one_label', 
+        'level_two_icon', 
+        'level_two_label', 
+        'level_three_icon', 
+        'level_three_label', 
+        'level_four_icon', 
+        'level_four_label'
     ];
 
     /**

@@ -66478,6 +66478,104 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -66517,7 +66615,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           start_date: "",
           end_date: "",
           image_url: "",
-          name: ""
+          name: "",
+          level_one_label: "",
+          level_one_icon: "",
+          level_two_label: "",
+          level_two_icon: "",
+          level_three_label: "",
+          level_three_icon: "",
+          level_four_label: "",
+          level_four_icon: ""
         };
         _this.challenges.push(response.data.payload);
       }).catch(function (error) {});
@@ -66813,6 +66919,286 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 col-form-label form-control-label"
+                        },
+                        [_vm._v("Level One")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_one_icon,
+                              expression: "form.level_one_icon"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Image Url for Icon",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.form.level_one_icon },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_one_icon",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_one_label,
+                              expression: "form.level_one_label"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { placeholder: "Level Label", type: "text" },
+                          domProps: { value: _vm.form.level_one_label },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_one_label",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 col-form-label form-control-label"
+                        },
+                        [_vm._v("Level Two")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_two_icon,
+                              expression: "form.level_two_icon"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Image Url for Icon",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.form.level_two_icon },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_two_icon",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_two_label,
+                              expression: "form.level_two_label"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { placeholder: "Level Label", type: "text" },
+                          domProps: { value: _vm.form.level_two_label },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_two_label",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 col-form-label form-control-label"
+                        },
+                        [_vm._v("Level Three")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_three_icon,
+                              expression: "form.level_three_icon"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Image Url for Icon",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.form.level_three_icon },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_three_icon",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_three_label,
+                              expression: "form.level_three_label"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { placeholder: "Level Label", type: "text" },
+                          domProps: { value: _vm.form.level_three_label },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_three_label",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 col-form-label form-control-label"
+                        },
+                        [_vm._v("Level Four")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_four_icon,
+                              expression: "form.level_four_icon"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Image Url for Icon",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.form.level_four_icon },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_four_icon",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.level_four_label,
+                              expression: "form.level_four_label"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { placeholder: "Level Label", type: "text" },
+                          domProps: { value: _vm.form.level_four_label },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "level_four_label",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
                       _c("label", {
                         staticClass:
                           "col-lg-3 col-form-label form-control-label"
@@ -66843,21 +67229,22 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "container py-3" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "mx-auto col-sm-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _vm.challenges.length > 0
-                  ? _c("table", { staticClass: "table" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.challenges, function(challenge) {
-                          return _c("tr", [
+      _c(
+        "div",
+        { staticClass: "container py-3" },
+        _vm._l(_vm.challenges, function(challenge) {
+          return _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "mx-auto col-sm-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(1, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _vm.challenges.length > 0
+                    ? _c("table", { staticClass: "table" }, [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
                             _vm.activeEditId == challenge.id
                               ? _c("td", [
                                   _c("input", {
@@ -67084,15 +67471,308 @@ var render = function() {
                               )
                             ])
                           ])
-                        })
-                      )
-                    ])
-                  : _c("p", [_vm._v("No companies found.")])
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.challenges.length > 0
+                    ? _c("table", { staticClass: "table" }, [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_one_icon,
+                                        expression: "challenge.level_one_icon"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_one_icon
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_one_icon",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_one_icon))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_two_icon,
+                                        expression: "challenge.level_two_icon"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_two_icon
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_two_icon",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_two_icon))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_three_icon,
+                                        expression: "challenge.level_three_icon"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_three_icon
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_three_icon",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_three_icon))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_four_icon,
+                                        expression: "challenge.level_four_icon"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_four_icon
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_four_icon",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_four_icon))
+                                ])
+                          ])
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.challenges.length > 0
+                    ? _c("table", { staticClass: "table" }, [
+                        _vm._m(4, true),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_one_label,
+                                        expression: "challenge.level_one_label"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_one_label
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_one_label",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_one_label))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_two_label,
+                                        expression: "challenge.level_two_label"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_two_label
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_two_label",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_two_label))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_three_label,
+                                        expression:
+                                          "challenge.level_three_label"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_three_label
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_three_label",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_three_label))
+                                ]),
+                            _vm._v(" "),
+                            _vm.activeEditId == challenge.id
+                              ? _c("td", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: challenge.level_four_label,
+                                        expression: "challenge.level_four_label"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" },
+                                    domProps: {
+                                      value: challenge.level_four_label
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          challenge,
+                                          "level_four_label",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _c("td", [
+                                  _vm._v(_vm._s(challenge.level_four_label))
+                                ])
+                          ])
+                        ])
+                      ])
+                    : _c("p", [_vm._v("No companies found.")])
+                ])
               ])
             ])
           ])
-        ])
-      ])
+        })
+      )
     ])
   ])
 }
@@ -67110,7 +67790,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h4", { staticClass: "mb-0" }, [_vm._v("Challenges")])
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Challenge")])
     ])
   },
   function() {
@@ -67128,6 +67808,38 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Type")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-right", attrs: { scope: "col" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level One Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Two Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Three Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Four Icon")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level One Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Two Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Three Icon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Four Icon")])
       ])
     ])
   }

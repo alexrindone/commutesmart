@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'conquer',
             'start_date' => '2018-11-01',
             'end_date' => '2018-12-31',
-            'type' => 'individual',
+            'type' => 'Individual',
             'image_url' => '/images/conquer-the-cold-banner.png'
         ]);
     }

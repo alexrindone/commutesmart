@@ -51,6 +51,44 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Level One</label>
+                                        <div class="col-lg-6">
+                                            <input placeholder="Image Url for Icon" class="form-control" type="text" v-model="form.level_one_icon">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input placeholder="Level Label" class="form-control" type="text" v-model="form.level_one_label">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Level Two</label>
+                                        <div class="col-lg-6">
+                                            <input placeholder="Image Url for Icon" class="form-control" type="text" v-model="form.level_two_icon">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input placeholder="Level Label" class="form-control" type="text" v-model="form.level_two_label">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Level Three</label>
+                                        <div class="col-lg-6">
+                                            <input placeholder="Image Url for Icon" class="form-control" type="text" v-model="form.level_three_icon">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input placeholder="Level Label" class="form-control" type="text" v-model="form.level_three_label">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Level Four</label>
+                                        <div class="col-lg-6">
+                                            <input placeholder="Image Url for Icon" class="form-control" type="text" v-model="form.level_four_icon">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input placeholder="Level Label" class="form-control" type="text" v-model="form.level_four_label">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
                                             <input type="reset" class="btn btn-secondary" value="Cancel">
@@ -65,11 +103,11 @@
                 </div>
             </div>
             <div class="container py-3">
-                <div class="row">
+                <div class="row" v-for="challenge in challenges">
                     <div class="mx-auto col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="mb-0">Challenges</h4>
+                                <h4 class="mb-0">Challenge</h4>
                             </div>
                             <div class="card-body">
                                 <table class="table" v-if="challenges.length > 0">
@@ -83,7 +121,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="challenge in challenges">
+                                        <tr>
                                             <td v-if="activeEditId == challenge.id">
                                                 <input class="form-control" type="text" v-model="challenge.name">
                                             </td>
@@ -112,6 +150,66 @@
                                                     <button v-if="activeEditId != challenge.id" v-on:click="deleteChallenge(challenge.id)" type="button" class="btn btn-danger">Delete</button>
                                                 </div>
                                             </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table" v-if="challenges.length > 0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Level One Icon</th>
+                                            <th scope="col">Level Two Icon</th>
+                                            <th scope="col">Level Three Icon</th>
+                                            <th scope="col">Level Four Icon</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_one_icon">
+                                            </td>
+                                            <td v-else>{{challenge.level_one_icon}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_two_icon">
+                                            </td>
+                                            <td v-else>{{challenge.level_two_icon}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_three_icon">
+                                            </td>
+                                            <td v-else>{{challenge.level_three_icon}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_four_icon">
+                                            </td>
+                                            <td v-else>{{challenge.level_four_icon}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table" v-if="challenges.length > 0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Level One Icon</th>
+                                            <th scope="col">Level Two Icon</th>
+                                            <th scope="col">Level Three Icon</th>
+                                            <th scope="col">Level Four Icon</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_one_label">
+                                            </td>
+                                            <td v-else>{{challenge.level_one_label}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_two_label">
+                                            </td>
+                                            <td v-else>{{challenge.level_two_label}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_three_label">
+                                            </td>
+                                            <td v-else>{{challenge.level_three_label}}</td>
+                                            <td v-if="activeEditId == challenge.id">
+                                                <input class="form-control" type="text" v-model="challenge.level_four_label">
+                                            </td>
+                                            <td v-else>{{challenge.level_four_label}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -162,7 +260,15 @@ export default {
             start_date: "",
             end_date: "",
             image_url: "",
-            name: ""
+            name: "",
+            level_one_label: "",
+            level_one_icon: "",
+            level_two_label: "",
+            level_two_icon: "",
+            level_three_label: "",
+            level_three_icon: "",
+            level_four_label: "",
+            level_four_icon: ""
           };
           this.challenges.push(response.data.payload);
         })

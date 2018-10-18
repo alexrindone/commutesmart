@@ -186,10 +186,10 @@
                                 <table class="table" v-if="challenges.length > 0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Level One Icon</th>
-                                            <th scope="col">Level Two Icon</th>
-                                            <th scope="col">Level Three Icon</th>
-                                            <th scope="col">Level Four Icon</th>
+                                            <th scope="col">Level One Label</th>
+                                            <th scope="col">Level Two Label</th>
+                                            <th scope="col">Level Three Label</th>
+                                            <th scope="col">Level Four Label</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -67833,13 +67833,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level One Icon")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level One Label")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Two Icon")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Two Label")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Three Icon")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Three Label")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Four Icon")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level Four Label")])
       ])
     ])
   }

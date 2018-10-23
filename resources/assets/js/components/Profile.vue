@@ -56,17 +56,6 @@
                                 <input :disabled="updated" id="zip" type="string" class="form-control" name="zip" v-model="user.zip" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="commutesmart_frequency" class="col-lg-3 col-form-label form-control-label">Commutesmart Frequency</label>
-                            <div class="col-lg-9">
-                                <select :disabled="updated" id="commutesmart_frequency" type="string" class="form-control" name="commutesmart_frequency" v-model="user.commutesmart_frequency" required>
-                                    <option value="Most Days">Most Days</option>
-                                    <option value="Once or twice a week">Once or twice a week</option>
-                                    <option value="Once or twice a month">Once or twice a month</option>
-                                    <option value="I almost always drive myself">I almost always drive myself</option>
-                                </select>
-                            </div>
-                        </div>
                         <!-- End New Fields -->
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Password</label>

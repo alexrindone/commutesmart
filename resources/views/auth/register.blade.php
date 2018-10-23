@@ -108,23 +108,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="commutesmart_frequency" class="col-md-4 col-form-label text-md-right">{{ __('Commutesmart Frequency') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="commutesmart_frequency" type="string" class="form-control{{ $errors->has('commutesmart_frequency') ? ' is-invalid' : '' }}" name="commutesmart_frequency" value="{{ old('commutesmart_frequency') }}" required>
-                                    <option value="Most Days">Most Days</option>
-                                    <option value="Once or twice a week">Once or twice a week</option>
-                                    <option value="Once or twice a month">Once or twice a month</option>
-                                    <option value="I almost always drive myself">I almost always drive myself</option>
-                                </select>
-                                @if ($errors->has('commutesmart_frequency'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('commutesmart_frequency') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <!-- End New Fields -->
 

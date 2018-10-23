@@ -60,8 +60,7 @@ class RegisterController extends Controller
             'city'     => 'required|string|max:30',
             'state'    => 'required|string|max:2',
             'zip'      => 'required|string|max:6',
-            'company_id'  => 'required',
-            'commutesmart_frequency' => 'required|string|max:255'
+            'company_id'  => 'required'
         ]);
     }
 
@@ -80,7 +79,6 @@ class RegisterController extends Controller
             'state' => $data['state'],
             'city' => $data['city'],
             'zip' => $data['zip'],
-            'commutesmart_frequency' => $data['commutesmart_frequency'],
             'company_id' => $data['company_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

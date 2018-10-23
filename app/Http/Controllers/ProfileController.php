@@ -30,7 +30,7 @@ class ProfileController extends Controller
     public function myProfile()
     {
         $user = Auth::user();
-        $companies = Company::get();
+        $companies = Company::orderBy('name')->get();
         $data = collect(['user' => $user, 'companies' => $companies]);
         return view('profile', ['data' => $data]);
     }

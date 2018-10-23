@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function companies()
     {
         // get all companies from database
-        $companies = Company::get();
+        $companies = Company::orderBy('name')->get();
         $data = collect(['companies' => $companies]);
         return view('companies', ['data' => $data]);
     }

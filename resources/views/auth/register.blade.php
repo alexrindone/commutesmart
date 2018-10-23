@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <select id="company_id" type="string" class="form-control{{ $errors->has('company_id') ? ' is-invalid' : '' }}" name="company_id" value="{{ old('company_id') }}" required>
                                     <option default value="">Please Select</option>
-                                    @foreach(App\Company::get() as $company)
+                                    @foreach(App\Company::orderBy('name')->get() as $company)
                                     <option value="{{$company->id}}">{{$company->name}}</option>
                                     @endforeach
                                 </select>

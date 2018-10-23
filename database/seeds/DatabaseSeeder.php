@@ -24,6 +24,12 @@ class DatabaseSeeder extends Seeder
             'size' => 'Large'
         ]);
 
+        $secondCompany = Company::create([
+            'name' => 'ABC',
+            'employee_count' => 20,
+            'size' => 'Small'
+        ]);
+
         // Add user
         $general_user = User::create([
             'name' => 'Alex Rindone',

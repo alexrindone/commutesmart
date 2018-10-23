@@ -30,7 +30,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Miles Traveled (Round Trip)</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="number" v-model="form.miles">
+                                            <input class="form-control" type="number" min="0" v-model="form.miles">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -176,6 +176,7 @@ export default {
         }
     },
     addTrip() {
+        this.form.miles = Math.abs(this.form.miles);
         this.validateDates();
         // add initial form date to dates
         this.dates.unshift(this.form.date);
@@ -190,8 +191,7 @@ export default {
         this.form.dates = this.dates;
         this.dates = [];
         // pass in whether or not these are the first set of trips so that the user can be notified
-        this.form.first_trips = this.firstTrips;
-        
+        this.form.first_trips = this.trips.length > 0 ? false : true;
       axios
         .post(`/trips/add`, this.form)
         .then(response => {

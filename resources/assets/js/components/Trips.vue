@@ -47,7 +47,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input :disabled="addDayDisabled || form.date == activeChallenge.end_date" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
+                                            <input :disabled="addDayDisabled || form.date == activeChallenge.end_date" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Another Trip">
                                         </div>
                                     </div>
                                     <div class="form-group row">

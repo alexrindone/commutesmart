@@ -38,6 +38,7 @@
                                         <div class="col-lg-6">
                                             <div>
                                                 <input :min="activeChallenge.start_date" :max="activeChallenge.end_date" class="form-control" type="date" v-model="form.date">
+                                                <small id="dateHelp" class="form-text text-muted">Click the "Add Day" button to log the same trip for another day.</small>
                                             </div>
                                             <div>
                                                 <div v-for="(date, key) in dates" v-if="dates && dates.length > 0" style="display:flex;">
@@ -47,7 +48,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input :disabled="addDayDisabled || form.date == activeChallenge.end_date" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Another Trip">
+                                            <input :disabled="addDayDisabled || form.date == activeChallenge.end_date" v-on:click="addDate()" type="button" class="btn btn-primary" value="Add Day">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -85,7 +86,7 @@
                                     <tbody>
                                         <tr v-for="trip in trips">
                                             <td v-if="activeEditId == trip.id">
-                                                <input class="form-control" type="date" v-model="trip.date">
+                                                <input :min="activeChallenge.start_date" :max="nowPlusWeek" class="form-control" type="date" v-model="trip.date">
                                             </td>
                                             <td v-else>{{trip.date}}</td>
                                             <td v-if="activeEditId == trip.id">
@@ -149,7 +150,8 @@ export default {
       activeEditId: "",
       dates: [],
       addDayDisabled: false,
-      firstTrips: this.data.trips.length > 0 ? false : true
+      firstTrips: this.data.trips.length > 0 ? false : true,
+      nowPlusWeek: moment().add(7, 'days').format('YYYY-MM-DD')
     };
   },
   methods: {
@@ -207,7 +209,7 @@ export default {
       axios
         .put(`/trips/${trip.id}/edit-trip`, trip)
         .then(response => {
-            console.log(response.data.payload);
+            
         })
         .catch(error => {});
     },
@@ -227,7 +229,7 @@ export default {
     validateDates() {
         // make sure a date wasn't added that was a week out, if it was disabled the addDay button
         let dates = this.dates;
-        let nowPlusWeek = moment().add(7, 'days').format('YYYY-MM-DD');
+        let nowPlusWeek = this.nowPlusWeek;
         if (dates.indexOf(nowPlusWeek) != -1) {
             this.addDayDisabled = true;
         }

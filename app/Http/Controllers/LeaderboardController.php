@@ -38,7 +38,7 @@ class LeaderboardController extends Controller
         // get all users with trips
         $users = User::whereHas('trips', function($query) use ($now){
             $query->where('date', '<=', $now);
-        })->with('trips')->with('company')->get();
+        })->with('trips')->with('company')->withCount('trips')->get();
         $data = collect(['users' => $users, 'modes' => $modes, 'challenge' => $challenge]);
         return view('individual-leaderboard', ['data' => $data]);
     }

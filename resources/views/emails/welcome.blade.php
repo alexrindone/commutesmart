@@ -6,7 +6,7 @@
     <body>
         <p>Greetings!
             <br /><br />
-            Thanks so much for registering for the Conquer the Cold Challenge!  We’re thrilled that you’re biking, walking or taking the bus in the cold weather. 
+            Thanks so much for registering for the Conquer the Cold Challenge!  We’re thrilled that you’re biking, riding a moped, walking or taking the bus in the cold weather. 
             <br /><br />
             Please let me know if you have any questions.
             <br /><br />

@@ -27,7 +27,7 @@
                 <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a> -->
-                <a class="nav-bar-brand" href="{{url('/')}}">
+                <a class="nav-bar-brand" href="https://commutesmartseacoast.org">
                     <img src="/images/logo.png" style="max-width:200px; height: auto;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

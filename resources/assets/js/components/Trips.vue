@@ -10,6 +10,7 @@
                                 <h4 class="mb-0">Add Trip</h4>
                             </div>
                             <div class="card-body">
+                                <p class="text-right">Click <a href="https://commutesmartseacoast.org/wp-content/uploads/2017/10/instructions-for-fake-app.docx">here</a> for how to add our "app" to your phone.</p>
                                 <form class="form" role="form" autocomplete="off">
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Challenge</label>

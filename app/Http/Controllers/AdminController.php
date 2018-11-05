@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Company;
 use App\Challenge;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -16,10 +18,11 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Response $response)
     {
         $this->middleware('auth');
         $this->request = $request;
+        $this->response = $response;
 
     }
 
@@ -148,5 +151,24 @@ class AdminController extends Controller
 	
 		// Fail
 		return response()->json(['status' => false, 'message' => 'An error occured deleting the company', 'payload' => []]);
+    }
+
+    public function exportUserNameAddress() {
+        // get user with name, address and trip count
+        $challenge = Challenge::where('id', 1)->first();
+        $now =  date("Y-m-d");
+        $users = User::select('name', 'email', 'street', 'city', 'state','zip')->whereHas('trips', function($query) use ($now, $challenge){
+            $query->whereDate('date', '>', $challenge->start_date)
+            ->WhereDate('date', '<', $now);
+        })->withCount('trips')->get()->toArray();
+
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="user-export.csv"');
+        $fp = fopen('php://output', 'wb');
+        foreach ( $users as $user ) {
+            fputcsv($fp, $user);
+        }
+        fclose($fp);
+        exit();
     }
 }

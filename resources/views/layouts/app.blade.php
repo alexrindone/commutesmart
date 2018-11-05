@@ -69,6 +69,10 @@
                                        >
                                         {{ __('Manage Challenges') }}
                                     </a>
+                                    <a class="dropdown-item" href="/admin/users-export"
+                                       >
+                                        {{ __('Export User Data') }}
+                                    </a>
                                 </div>
                             </li>
                             @endif

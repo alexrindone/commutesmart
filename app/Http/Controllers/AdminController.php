@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Company;
 use App\Challenge;
 use App\User;
+use File;
 
 class AdminController extends Controller
 {
@@ -154,21 +155,28 @@ class AdminController extends Controller
     }
 
     public function exportUserNameAddress() {
-        // get user with name, address and trip count
+        // get user with name, address and trip count, need to make this dynamic by passing in specific challenge id
         $challenge = Challenge::where('id', 1)->first();
         $now =  date("Y-m-d");
         $users = User::select('name', 'email', 'street', 'city', 'state','zip')->whereHas('trips', function($query) use ($now, $challenge){
             $query->whereDate('date', '>', $challenge->start_date)
             ->WhereDate('date', '<', $now);
         })->withCount('trips')->get()->toArray();
-
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="user-export.csv"');
-        $fp = fopen('php://output', 'wb');
+        // set path for saving csv
+        $path = storage_path(time() . '_userData.csv');
+        $fp = fopen($path, 'wb');
+        $i = 0;
         foreach ( $users as $user ) {
+            if ($i == 0) {
+                // make headers
+                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Trips']);
+            }
+            // put in user
             fputcsv($fp, $user);
+            $i++;
         }
         fclose($fp);
-        exit();
+        // download and delete file from server
+	    return response()->download($path)->deleteFileAfterSend();
     }
 }

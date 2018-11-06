@@ -49,6 +49,7 @@
                                     <option value="{{$company->id}}">{{$company->name}}</option>
                                     @endforeach
                                 </select>
+                                <small id="companyHelp" class="form-text text-muted">Don't see your company? Please email <a href="mailto:info@commutesmartseacoast">info@commutesmartseacoast</a> so we can add it.</small>
                                 @if ($errors->has('company_id'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('company_id') }}</strong>

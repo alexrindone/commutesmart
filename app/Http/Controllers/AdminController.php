@@ -159,8 +159,7 @@ class AdminController extends Controller
         $challenge = Challenge::where('id', 1)->first();
         $now =  date("Y-m-d");
         $users = User::select('name', 'email', 'street', 'city', 'state','zip')->whereHas('trips', function($query) use ($now, $challenge){
-            $query->whereDate('date', '>', $challenge->start_date)
-            ->WhereDate('date', '<', $now);
+            $query->WhereDate('date', '<', $now);
         })->withCount('trips')->get()->toArray();
         // set path for saving csv
         $path = storage_path(time() . '_userData.csv');

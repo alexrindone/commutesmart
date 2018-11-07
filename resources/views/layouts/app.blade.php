@@ -54,7 +54,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/leaderboard">{{ __('Leaderboard') }}</a>
                             </li>
-                            @if (Auth::user()->email == 'arindone1679@gmail.com' || Auth::user()->email == 'anne@coastbus.org')
+                            @if (Auth::user()->type == 'admin')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Admin <span class="caret"></span>

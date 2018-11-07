@@ -9,8 +9,7 @@ class AdminUser
 {
     public function handle($request, Closure $next)
     {
-        $valid_admin_emails = ['arugg@coastbus.org', 'arindone1679@gmail.com', 'arugg@commutesmartseacoast.org'];
-        if ( Auth::check() && in_array(Auth::user()->email, $valid_admin_emails) )
+        if ( Auth::check() && Auth::user()->type == 'admin' )
         {
             return $next($request);
         }

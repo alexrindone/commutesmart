@@ -158,9 +158,21 @@ class AdminController extends Controller
         // get user with name, address and trip count, need to make this dynamic by passing in specific challenge id
         $challenge = Challenge::where('id', 1)->first();
         $now =  date("Y-m-d");
-        $users = User::select('name', 'email', 'street', 'city', 'state','zip')->whereHas('trips', function($query) use ($now, $challenge){
+        $users = User::whereHas('trips', function($query) use ($now, $challenge){
             $query->WhereDate('date', '<', $now);
-        })->withCount('trips')->get()->toArray();
+        })->withCount('trips')->with('company:id,name')->get();
+        $users = $users->transform(function($user){
+            return [
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'street' => $user['street'],
+                'city' => $user['city'],
+                'state' => $user['state'],
+                'zip' => $user['zip'],
+                'company' => $user['company'] = $user['company']['name'],
+                'trips_count' => $user['trips_count']
+            ];
+        })->toArray();
         // set path for saving csv
         $path = storage_path(time() . '_userData.csv');
         $fp = fopen($path, 'wb');
@@ -168,7 +180,7 @@ class AdminController extends Controller
         foreach ( $users as $user ) {
             if ($i == 0) {
                 // make headers
-                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Trips']);
+                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips']);
             }
             // put in user
             fputcsv($fp, $user);

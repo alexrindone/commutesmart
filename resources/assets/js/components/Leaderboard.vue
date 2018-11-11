@@ -135,8 +135,9 @@ export default {
             }
             let searchName = this.searchName;
             if (searchName) {
+                searchName = searchName.toLowerCase();
                 users = _.filter(users, function(user){
-                    return user.name.indexOf(searchName) != -1;
+                    return user.name.toLowerCase().indexOf(searchName) != -1;
                 });
             }
             _.forEach(users, function(user) {

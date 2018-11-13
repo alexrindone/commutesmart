@@ -162,6 +162,8 @@ class AdminController extends Controller
             $query->WhereDate('date', '<', $now);
         })->withCount('trips')->with('company:id,name')->get();
         $users = $users->transform(function($user){
+            // add modes used to excel
+            $modes = collect($user->trips)->pluck('mode')->unique()->implode(' - ');
             return [
                 'name' => $user['name'],
                 'email' => $user['email'],
@@ -170,7 +172,8 @@ class AdminController extends Controller
                 'state' => $user['state'],
                 'zip' => $user['zip'],
                 'company' => $user['company'] = $user['company']['name'],
-                'trips_count' => $user['trips_count']
+                'trips_count' => $user['trips_count'],
+                'modes' => $modes
             ];
         })->toArray();
         // set path for saving csv
@@ -180,7 +183,7 @@ class AdminController extends Controller
         foreach ( $users as $user ) {
             if ($i == 0) {
                 // make headers
-                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips']);
+                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
             }
             // put in user
             fputcsv($fp, $user);

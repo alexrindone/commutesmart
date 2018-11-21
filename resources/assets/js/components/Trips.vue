@@ -195,6 +195,10 @@ export default {
         this.dates = [];
         // pass in whether or not these are the first set of trips so that the user can be notified
         this.form.first_trips = this.trips.length > 0 ? false : true;
+        // if this isn't the first set of trips, get previous trip count
+        if (!this.form.first_trips) {
+            this.form.trips_total = this.trips.length;
+        }
       axios
         .post(`/trips/add`, this.form)
         .then(response => {

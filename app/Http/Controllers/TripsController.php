@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Mail;
 use App\Mail\LogMail;
 use App\Mail\AdminLogMail;
+use App\Mail\LevelOneMail;
+use App\Mail\LevelTwoMail;
+use App\Mail\LevelThreeMail;
+use App\Mail\LevelFourMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Trip;
@@ -43,9 +47,22 @@ class TripsController extends Controller
         return view('trips', ['data' => $data]);
     }
 
+    protected function sendEmail($status)
+    {
+        $emails = [
+            'level_one'   => new LevelOneMail(Auth::user()),
+            'level_two'   => new LevelTwoMail(Auth::user()),
+            'level_three' => new LevelThreeMail(Auth::user()),
+            'level_four'  => new LevelFourMail(Auth::user())
+        ];
+        
+        return Mail::to(Auth::user()->email)->bcc('arugg@commutesmartseacoast.org')->send($emails[$status]);
+    }
+
     public function addTrip()
     {
         $form = $this->request->all();
+
         // set user id
         $form['user_id'] = Auth::user()->id;
         $tripDates = $form['dates'];
@@ -64,8 +81,48 @@ class TripsController extends Controller
             // check if it's their first set of trips, if it is send a thank you for logging their first trip
             if ($form['first_trips']) {
                 Mail::to(Auth::user()->email)->send(new LogMail(Auth::user()));
+                // Mail::to('arindone@iapp.org')->send(new AdminLogMail(Auth::user()));
                 Mail::to('arugg@commutesmartseacoast.org')->send(new AdminLogMail(Auth::user()));
             }
+
+            // send email based on user status
+            if (isset($form['trips_total'])) {
+                // old trip count to set status
+                $trip_count = $form['trips_total'];
+                // new trip count to set new status
+                $new_trip_count = $trip_count + count($form['dates']);
+                // calculate old user status
+                if ($trip_count < 16) {
+                    $user_status = 'level_one';
+                } elseif($trip_count >= 16 && $trip_count < 31) {
+                    $user_status = 'level_two';
+                } elseif($trip_count >= 31 && $trip_count < 46){
+                    $user_status = 'level_three';
+                } elseif($trip_count >= 46) {
+                    $user_status = 'level_four';
+                } else {
+                    // Do nothing
+                }
+                // calculate new user status
+                if ($new_trip_count < 16) {
+                    $new_user_status = 'level_one';
+                } elseif($new_trip_count >= 16 && $new_trip_count < 31) {
+                    $new_user_status = 'level_two';
+                } elseif($new_trip_count >= 31 && $new_trip_count < 46){
+                    $new_user_status = 'level_three';
+                } elseif($new_trip_count >= 46) {
+                    $new_user_status = 'level_four';
+                } else {
+                    // Do nothing
+                }
+                // check if new or old status matches, if it doesn't send email
+                if ($user_status != $new_user_status) {
+                    $status = $new_user_status;
+                    // send email
+                    $sent = $this->sendEmail($status);
+                }
+            }
+
             // get all trips
             $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date')->get();
 			// Success

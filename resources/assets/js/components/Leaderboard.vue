@@ -17,7 +17,7 @@
                                     <div class="row">
                                         <div class="col-4 total-tile">
                                             <h4 v-if="users" class="head">{{totals.miles}}</h4>
-                                            <span style="font-size: 12px;">Miles Saved</span>
+                                            <span style="font-size: 12px;">Drive-alone miles saved</span>
                                         </div>
                                         <div class="col-4 total-tile">
                                             <h4 v-if="users" class="head">{{totals.co}} lbs</h4>

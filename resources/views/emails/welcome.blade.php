@@ -4,7 +4,7 @@
         <title>Greetings!</title>
     </head>
     <body>
-        <p>Greetings!
+        <p>Greetings {{$user->name}}!
             <br /><br />
             Thanks so much for registering for the Conquer the Cold Challenge!  We’re thrilled that you’re biking, riding a moped, walking or taking the bus in the cold weather. 
             <br /><br />

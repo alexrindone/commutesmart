@@ -174,6 +174,7 @@ class AdminController extends Controller
             return [
                 'first' => $first,
                 'last'  => isset($last) ? $last : 'N/A',
+                'full'  => $user['name'],
                 'email' => $user['email'],
                 'street' => $user['street'],
                 'city' => $user['city'],
@@ -191,7 +192,7 @@ class AdminController extends Controller
         foreach ( $users as $user ) {
             if ($i == 0) {
                 // make headers
-                fputcsv($fp, ['First', 'Last', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
+                fputcsv($fp, ['First', 'Last', 'Full Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
             }
             // put in user
             fputcsv($fp, $user);

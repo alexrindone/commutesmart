@@ -164,8 +164,16 @@ class AdminController extends Controller
         $users = $users->transform(function($user){
             // add modes used to excel
             $modes = collect($user->trips)->pluck('mode')->unique()->implode(' - ');
+            $name = explode(" ", $user['name']);
+            if (is_array($name)) {
+                $first = $name[0];
+                $last = $name[1];
+            } else {
+                $first = $user['name'];
+            }
             return [
-                'name' => $user['name'],
+                'first' => $first,
+                'last'  => isset($last) ? $last : 'N/A',
                 'email' => $user['email'],
                 'street' => $user['street'],
                 'city' => $user['city'],
@@ -183,7 +191,7 @@ class AdminController extends Controller
         foreach ( $users as $user ) {
             if ($i == 0) {
                 // make headers
-                fputcsv($fp, ['Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
+                fputcsv($fp, ['First', 'Last', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
             }
             // put in user
             fputcsv($fp, $user);

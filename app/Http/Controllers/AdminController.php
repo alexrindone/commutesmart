@@ -167,7 +167,7 @@ class AdminController extends Controller
             $name = explode(" ", $user['name']);
             if (is_array($name)) {
                 $first = $name[0];
-                $last = $name[1];
+                $last = array_key_exists(1, $name) ? $name[1] : 'N/A';
             } else {
                 $first = $user['name'];
             }

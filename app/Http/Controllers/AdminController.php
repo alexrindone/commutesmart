@@ -42,7 +42,7 @@ class AdminController extends Controller
 
     public function listUsers()
     {
-        $users = User::with('company')->orderBy('name')->get();
+        $users = User::with('company')->get();
         $data = collect(['users' => $users]);
         return view('users', ['data' => $data]);
     }

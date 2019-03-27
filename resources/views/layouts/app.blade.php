@@ -85,6 +85,11 @@
                                     <a class="dropdown-item" href="/trips">
                                         {{ __('My Trips') }}
                                     </a>
+                                    @if (Auth::user()->is_captain)
+                                        <a class="dropdown-item" href="/profile/team">
+                                            {{ __('My Team') }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="/profile">
                                         {{ __('My Profile') }}
                                     </a>
@@ -104,7 +109,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

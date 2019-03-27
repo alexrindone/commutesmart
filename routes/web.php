@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::prefix('profile')->middleware(['auth'])->group(function () {
     Route::get('/', 'ProfileController@myProfile');
+    Route::get('/team', 'ProfileController@myTeam');
+    Route::get('/export-team', 'ProfileController@exportMyTeam');
     Route::put('/user-update', 'ProfileController@userUpdate');
 });
 

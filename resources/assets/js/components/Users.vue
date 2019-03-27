@@ -21,7 +21,7 @@
                                             <th scope="col">Captain</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody v-if="users && users.length">
                                         <tr v-for="user in users">
                                             <td>{{user.name}}</td>
                                             <td>{{user.email}}</td>

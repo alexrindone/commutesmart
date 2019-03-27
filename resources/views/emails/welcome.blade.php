@@ -6,11 +6,9 @@
     <body>
         <p>Greetings {{$user->name}}!
             <br /><br />
-            Thanks so much for registering for the Conquer the Cold Challenge!  We’re thrilled that you’re biking, riding a moped, walking or taking the bus in the cold weather. 
+            Thanks for registering for a commuter challenge!
             <br /><br />
-            Please let me know if you have any questions.
-            <br /><br />
-            Your wallet, your planet, and I thank you for signing up for the challenge.
+            Your planet and your wallet appreciate your effort to commute sustainably.
             <br /><br />
             Best regards,
             <br /><br />

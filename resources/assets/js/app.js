@@ -39,6 +39,8 @@ Vue.component('companies-leaderboard', require('./components/CompaniesLeaderboar
 Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('team', require('./components/Team.vue'));
 
+Vue.component('users', require('./components/Users.vue'));
+
 Vue.component('companies', require('./components/Companies.vue'));
 Vue.component('challenges', require('./components/Challenges.vue'));
 Vue.component('trips', require('./components/Trips.vue'));

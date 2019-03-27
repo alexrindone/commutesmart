@@ -10515,3 +10515,12 @@ table.leaderboard tr th {
           justify-content: space-between;
 }
 
+.form-check.is-captain {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+

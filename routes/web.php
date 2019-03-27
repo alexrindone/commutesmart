@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::prefix('profile')->middleware(['auth'])->group(function () {
     Route::get('/', 'ProfileController@myProfile');
+    Route::get('/team', 'ProfileController@myTeam');
+    Route::get('/export-team', 'ProfileController@exportMyTeam');
     Route::put('/user-update', 'ProfileController@userUpdate');
 });
 
@@ -37,6 +39,10 @@ Route::prefix('leaderboard')->group(function () {
 Route::prefix('admin')->middleware(['auth', 'admin_user'])->group(function () {
     Route::get('/users-export', 'AdminController@exportUserNameAddress');
     Route::get('/companies', 'AdminController@companies');
+    Route::get('/users', 'AdminController@listUsers');
+    Route::put('/update-captains', 'AdminController@updateCaptains');
+
+
     Route::post('/add-company', 'AdminController@addCompany');
     Route::put('{id}/edit-company', 'AdminController@editCompany');
     Route::delete('{id}/delete-company', 'AdminController@deleteCompany');

@@ -13,6 +13,8 @@ import VueRangedatePicker from 'vue-rangedate-picker';
 import DateRangePicker from 'vue2-daterange-picker';
 import DatePicker from 'vue2-datepicker';
 import VueCurrencyFilter from 'vue-currency-filter';
+
+
 Vue.use(VueCurrencyFilter, {
     symbol: '$',
     thousandsSeparator: ',',
@@ -35,6 +37,10 @@ Vue.component('leaderboard', require('./components/Leaderboard.vue'));
 Vue.component('companies-leaderboard', require('./components/CompaniesLeaderboard.vue'));
 
 Vue.component('profile', require('./components/Profile.vue'));
+Vue.component('team', require('./components/Team.vue'));
+
+Vue.component('users', require('./components/Users.vue'));
+
 Vue.component('companies', require('./components/Companies.vue'));
 Vue.component('challenges', require('./components/Challenges.vue'));
 Vue.component('trips', require('./components/Trips.vue'));

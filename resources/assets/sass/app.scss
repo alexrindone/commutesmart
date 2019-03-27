@@ -43,3 +43,15 @@ table {
     }
   }
 }
+
+.card-head-btn {
+  display:flex; 
+  justify-content: space-between;
+}
+
+.form-check {
+  &.is-captain {
+    justify-content: center;
+    display: flex;
+  }
+}

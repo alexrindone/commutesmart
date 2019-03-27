@@ -40,6 +40,34 @@ class AdminController extends Controller
         return view('companies', ['data' => $data]);
     }
 
+    public function listUsers()
+    {
+        $users = User::with('company')->orderBy('name')->get();
+        $data = collect(['users' => $users]);
+        return view('users', ['data' => $data]);
+    }
+
+    public function updateCaptains()
+    {
+        $users = $this->request->all();
+        // need to loop through and update each captain
+        $updated = collect($users)->each(function ($user) {
+            // get user model
+            $update_user = User::findOrFail($user['id']);
+            $update_user->is_captain = (boolean) $user['is_captain'];
+            $saved = $update_user->save();
+            return $saved;
+        });
+        
+        if (isset($updated) && count($updated) > 0) {
+			// Success
+			return response()->json(['status' => true, 'message' => 'Updated Successfully!']);
+		}
+	
+		// Fail
+		return response()->json(['status' => false, 'message' => 'An error occured updating users.', 'payload' => []]);
+    }
+
     public function addCompany()
     {
         $form = $this->request->all();

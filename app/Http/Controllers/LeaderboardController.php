@@ -33,7 +33,7 @@ class LeaderboardController extends Controller
     {
         // sort by modes?
         $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-        $challenge = Challenge::where('id', 1)->first();
+        $challenge = Challenge::first();
         $now =  date("Y-m-d");
         // get all users with trips
         $users = User::whereHas('trips', function($query) use ($now){

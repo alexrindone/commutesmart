@@ -4,7 +4,8 @@
                 <div class="row">
                     <div class="col-sm-12 mx-auto">
                         <div class="container">
-                            <img :src="challenge.image_url" class="img-fluid" :alt="challenge.name">
+                            <img src="/images/b2b-2019.png" class="img-fluid" alt="B2B May Challenge">
+                            <!-- <img :src="challenge.image_url" class="img-fluid" :alt="challenge.name"> -->
                         </div>
                     </div>
                 </div>
@@ -156,14 +157,14 @@ export default {
                 };
 
                 // tripcount / employees to set per capita
-                company.totals.capita = company.totals.trips / company.users.length;
+                company.totals.capita = _.round((company.totals.trips / company.users.length), 2);
             });
 
             this.calculateTotals(companies);
                
             this.loading = false;
             // order by per capita
-            return _.orderBy(companies, ['totals.capital'], ['desc']);
+            return _.orderBy(companies, ['totals.capita'], ['desc']);
         }
     }
 };

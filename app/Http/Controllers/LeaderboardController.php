@@ -45,8 +45,9 @@ class LeaderboardController extends Controller
 
     public function companiesLeaderboard()
     {
+        // Telework, Carpool, Vanpool added for B2B challenge
         // sort by modes?
-        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
+        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
         $challenge = Challenge::where('id', 1)->first();
         // get all users with trips
         $companies = Company::whereHas('users')->with('users.trips')->get();

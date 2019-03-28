@@ -27,6 +27,7 @@
                                         <label class="col-lg-3 col-form-label form-control-label">Size</label>
                                         <div class="col-lg-9">
                                             <select id="size" class="form-control" v-model="form.size">
+                                                <option value="Micro">Micro</option>
                                                 <option value="Very Small">Very Small</option>
                                                 <option value="Small">Small</option>
                                                 <option value="Medium">Medium</option>
@@ -74,6 +75,8 @@
                                             <td v-else>{{company.name}}</td>
                                             <td v-if="activeEditId == company.id">
                                                 <select id="size" class="form-control" v-model="company.size">
+                                                    <option value="Micro">Micro</option>
+                                                    <option value="Very Small">Very Small</option>
                                                     <option value="Small">Small</option>
                                                     <option value="Medium">Medium</option>
                                                     <option value="Large">Large</option>

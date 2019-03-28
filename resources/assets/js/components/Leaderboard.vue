@@ -57,12 +57,11 @@
                                             <tbody>
                                                 <tr v-for="user in sumTrips">
                                                     <td>
-                                                        <span style="float:left; max-width: 10%;">
+                                                        <span v-if="challenge.level_one_icon" style="float:left; max-width: 10%;">
                                                             <img v-if="user.trips_count < 16" :src="challenge.level_one_icon" class="img-fluid" :alt="challenge.level_one_label">
                                                             <img v-if="user.trips_count >= 16 && user.trips_count < 31" :src="challenge.level_two_icon" class="img-fluid" :alt="challenge.level_two_label">
                                                             <img v-if="user.trips_count >= 31 && user.trips_count < 46" :src="challenge.level_three_icon" class="img-fluid" :alt="challenge.level_three_label">
                                                             <img v-if="user.trips_count >= 46" :src="challenge.level_four_icon" class="img-fluid" :alt="challenge.level_four_label">
-
                                                         </span>
                                                         {{user.name}}<br />
                                                         {{user.company.name}}

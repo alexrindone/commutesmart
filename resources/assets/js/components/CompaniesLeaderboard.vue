@@ -4,8 +4,7 @@
                 <div class="row">
                     <div class="col-sm-12 mx-auto">
                         <div class="container">
-                            <img src="/images/b2b-2019.png" class="img-fluid" alt="B2B May Challenge">
-                            <!-- <img :src="challenge.image_url" class="img-fluid" :alt="challenge.name"> -->
+                            <img v-if="challenge.image_url" :src="challenge.image_url" class="img-fluid" :alt="challenge.name">
                         </div>
                     </div>
                 </div>
@@ -58,7 +57,10 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="company in sumTrips">
-                                                    <td>{{company.name}}<br /><span style="font-size:12px;">{{company.size}}</span></td>
+                                                    <td>
+                                                        <a class="company-link" :href="'/leaderboard/company/' + company.id + '/' + challenge.slug">{{company.name}}</a>
+                                                        <br /><span style="font-size:12px;">{{company.size}}</span>
+                                                    </td>
                                                     <td>{{company.totals.trips}}</td>
                                                     <td>{{company.totals.miles}}mi</td>
                                                     <td>{{company.totals.capita}}</td>
@@ -67,7 +69,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <p v-if="sumTrips.length <= 0">No trips found.</p>
+                                        <p v-if="sumTrips.length <= 0">No trips found. <span v-if="challengeOpen">This challenge opens up {{challengeStartDate}}.</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -117,6 +119,12 @@ export default {
         }
   },
   computed: {
+        challengeStartDate() {
+            return moment(this.challenge.start_date).format('LL');;
+        },
+        challengeOpen() {
+            return moment().format('X') <= moment(this.challenge.start_date).format('X');
+        },
         sumTrips() {
             this.loading = true;
             let companies = this.companies;

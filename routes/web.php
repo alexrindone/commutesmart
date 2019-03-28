@@ -32,8 +32,12 @@ Route::prefix('trips')->middleware(['auth'])->group(function () {
 });
 
 Route::prefix('leaderboard')->group(function () {
-    Route::get('/', 'LeaderboardController@individual');
-    Route::get('/companies', 'LeaderboardController@companiesLeaderboard');
+    Route::get('/', function(){
+        return redirect('/leaderboard/companies/may-b2b-challenge');
+    });
+    Route::get('/individual/{slug}', 'LeaderboardController@individual');
+    Route::get('/companies/{slug}', 'LeaderboardController@companiesLeaderboard');
+    Route::get('/company/{id}/{slug}', 'LeaderboardController@individualCompanyLeaderboard');
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin_user'])->group(function () {

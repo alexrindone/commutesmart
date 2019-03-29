@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'LeaderboardController@individual')->middleware(['auth']);
+Route::get('/', function(){
+    return redirect('/profile');
+})->middleware(['auth']);
 
 Auth::routes();
 

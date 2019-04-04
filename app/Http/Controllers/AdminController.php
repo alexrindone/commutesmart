@@ -230,4 +230,47 @@ class AdminController extends Controller
         // download and delete file from server
 	    return response()->download($path)->deleteFileAfterSend();
     }
+
+    public function allRegisteredUsers() {
+        // get user with name, address and trip count, need to make this dynamic by passing in specific challenge id
+        $users = User::with('company:id,name')->get();
+        $users = $users->transform(function($user){
+            // add modes used to excel
+            $name = explode(" ", $user['name']);
+            if (is_array($name)) {
+                $first = $name[0];
+                $last = array_key_exists(1, $name) ? $name[1] : 'N/A';
+            } else {
+                $first = $user['name'];
+            }
+            return [
+                'first' => $first,
+                'last'  => isset($last) ? $last : 'N/A',
+                'full'  => $user['name'],
+                'email' => $user['email'],
+                'street' => $user['street'],
+                'city' => $user['city'],
+                'state' => $user['state'],
+                'zip' => $user['zip'],
+                'company' => $user['company'] = $user['company']['name'],
+                'registered' => $user['created_at']
+            ];
+        })->toArray();
+        // set path for saving csv
+        $path = storage_path(time() . '_registeredUserData.csv');
+        $fp = fopen($path, 'wb');
+        $i = 0;
+        foreach ( $users as $user ) {
+            if ($i == 0) {
+                // make headers
+                fputcsv($fp, ['First', 'Last', 'Full Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Date Registered']);
+            }
+            // put in user
+            fputcsv($fp, $user);
+            $i++;
+        }
+        fclose($fp);
+        // download and delete file from server
+	    return response()->download($path)->deleteFileAfterSend();
+    }
 }

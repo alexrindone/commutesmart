@@ -85,9 +85,13 @@
                                        >
                                         {{ __('Update Captains') }}
                                     </a>
-                                    <a class="dropdown-item" href="/admin/users-export"
+                                    <a class="dropdown-item" href="/admin/users-trips-export"
                                        >
-                                        {{ __('Export User Data') }}
+                                        {{ __('Export User Trips Data') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/users-registered-export"
+                                       >
+                                        {{ __('Export Registered Users Data') }}
                                     </a>
                                 </div>
                             </li>

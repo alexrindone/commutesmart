@@ -44,13 +44,14 @@
 
                             <div class="col-md-6">
                                 <select id="company_id" type="string" class="form-control{{ $errors->has('company_id') ? ' is-invalid' : '' }}" name="company_id" value="{{ old('company_id') }}" required>
+                                <!-- used for B2B challenge -->
+                                            <option selected disabled>Please select</option>
                                     @foreach(App\Company::orderBy('name')->get() as $company)
-                                        @if ($company->name == 'Other')
-                                            <p>test</p>
-                                            <option selected value="{{$company->id}}">{{$company->name}}</option>
-                                        @else
+                                        <!-- used for non B2B challenge @if ($company->name == 'Other') -->
+                                            <!-- <option selected value="{{$company->id}}">{{$company->name}}</option> -->
+                                        <!-- @else -->
                                             <option value="{{$company->id}}">{{$company->name}}</option>
-                                        @endif
+                                        <!-- @endif -->
                                     @endforeach
                                 </select>
                                 <small id="companyHelp" class="form-text text-muted" style="font-size: 0.9rem;">Don't see your company? Select <strong>Other</strong> and email <a href="mailto:info@commutesmartseacoast">info@commutesmartseacoast</a> if you would like it added.</small>

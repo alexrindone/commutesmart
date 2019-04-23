@@ -55,11 +55,12 @@ class LeaderboardController extends Controller
             // Telework, Carpool, Vanpool added for B2B challenge
             // sort by modes?
             $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
+            $sizes = ['Micro', 'Very Small', 'Small', 'Medium', 'Large', 'Major'];
             // get all users with trips
             $companies = Company::whereHas('users')->with('users.trips')->whereHas('users.trips', function($query) use ($challenge){
                 $query->where('challenge_id', $challenge->id);
             })->get();
-            $data = collect(['companies' => $companies, 'modes' => $modes, 'challenge' => $challenge]);
+            $data = collect(['companies' => $companies, 'modes' => $modes, 'sizes' => $sizes, 'challenge' => $challenge]);
             return view('companies-leaderboard', ['data' => $data]);
         }
         return redirect('home');

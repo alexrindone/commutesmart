@@ -42,6 +42,12 @@
                                                 <option v-for="mode in modes" :value="mode">{{mode}}</option>
                                             </select>
                                         </div>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" id="filtered" v-model="filterBySize">
+                                                <option selected value="unfiltered">Filter by Size</option>
+                                                <option v-for="size in sizes" :value="size">{{size}}</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="row table-responsive-sm">
                                         <table class="table leaderboard" v-if="sumTrips.length > 0">
@@ -95,6 +101,7 @@ export default {
     return {
       companies: this.data.companies,
       modes: this.data.modes,
+      sizes: this.data.sizes,
       challenge: this.data.challenge,
       filtered: 'unfiltered',
       totalMiles: 0,
@@ -106,7 +113,8 @@ export default {
           co: 0,
           money: 0
       },
-      loading: false
+      loading: false,
+      filterBySize: 'unfiltered'
     };
   },
   methods: {
@@ -138,6 +146,14 @@ export default {
             if (searchName) {
                 companies = _.filter(companies, function(company){
                     return company.name.indexOf(searchName) != -1;
+                });
+            }
+            
+            // filter by company size
+            let filterBySize = this.filterBySize;
+            if (filterBySize && filterBySize != 'unfiltered') {
+                companies = _.filter(companies, function(company){
+                    return company.size == filterBySize;
                 });
             }
             _.forEach(companies, function(company){

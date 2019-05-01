@@ -84,12 +84,27 @@ class LeaderboardController extends Controller
         $challenge = Challenge::where('slug', $slug)->first(); 
         if ($company && $challenge) {
             // sort by modes?
-            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-            $now =  date("Y-m-d");
+            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
+            $today =  date("Y-m-d");
             // get all users with trips
-            $users = User::whereHas('trips', function($query) use ($challenge){
-                $query->where('challenge_id', $challenge->id);
-            })->with('trips')->with('company')->withCount('trips')->where('company_id', $company_id)->get();
+            // $users = User::whereHas('trips', function($query) use ($challenge){
+            //     $query->where('challenge_id', $challenge->id);
+            // })->with('trips')->with('company')->withCount('trips')->where('company_id', $company_id)->get();
+
+            $users = User::whereHas('trips', function($query) use ($challenge, $today){
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            })->with(array('trips' => function($query) use ($challenge, $today) {
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            }))->with('company')->where('company_id', $company_id)->withCount(array('trips' => function($query) use ($challenge, $today){
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            }))->get();
+
             $data = collect(['users' => $users, 'modes' => $modes, 'challenge' => $challenge]);
             return view('individual-leaderboard', ['data' => $data]);
         }

@@ -8,7 +8,7 @@ use App\Trip;
 use App\User;
 use App\Company;
 use App\Challenge;
-
+use Carbon\Carbon;
 class LeaderboardController extends Controller
 {
     protected $request;
@@ -56,10 +56,22 @@ class LeaderboardController extends Controller
             // sort by modes?
             $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
             $sizes = ['Micro', 'Small', 'Medium', 'Large', 'Major'];
-            // get all users with trips
-            $companies = Company::whereHas('users')->with('users.trips')->whereHas('users.trips', function($query) use ($challenge){
-                $query->where('challenge_id', $challenge->id);
-            })->get();
+            $today = date('Y-m-d'); // get today's date
+            // get all users with trips -- old way
+            // $companies = Company::with('users')->whereHas('users.trips', function($query) use ($challenge, $today){
+            //     return $query->where('challenge_id', '=' , $challenge->id)
+            //             ->where('date', '>=', $challenge->start_date)->where('date', '=', $today);
+            //     // dd($query);
+            // })->with('users.trips')->get();
+            $companies = Company::whereHas('users.trips', function($query) use ($challenge, $today){
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            })->with(array('users.trips' => function($query) use ($challenge, $today) {
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            }))->get();
             $data = collect(['companies' => $companies, 'modes' => $modes, 'sizes' => $sizes, 'challenge' => $challenge]);
             return view('companies-leaderboard', ['data' => $data]);
         }

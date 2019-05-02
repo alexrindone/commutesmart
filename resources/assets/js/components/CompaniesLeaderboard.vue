@@ -179,7 +179,6 @@ export default {
                     money: _.sumBy(company.users, 'total_money'),
                     trips: _.sumBy(company.users, 'total_trips')
                 };
-                console.log(company.users_count);
                 // tripcount / employees to set per capita
                 company.totals.capita = _.round((company.totals.trips / company.users_count), 2);
             });

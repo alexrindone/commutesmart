@@ -71,7 +71,7 @@ class LeaderboardController extends Controller
                 return $query->where('challenge_id', $challenge->id)
                             ->where('date', '<=', $today)
                             ->where('date', '>=', $challenge->start_date);
-            }))->get();
+            }))->withCount('users')->get();
             $data = collect(['companies' => $companies, 'modes' => $modes, 'sizes' => $sizes, 'challenge' => $challenge]);
             return view('companies-leaderboard', ['data' => $data]);
         }

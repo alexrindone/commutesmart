@@ -179,8 +179,9 @@ export default {
                     money: _.sumBy(company.users, 'total_money'),
                     trips: _.sumBy(company.users, 'total_trips')
                 };
-                // tripcount / employees to set per capita
-                company.totals.capita = _.round((company.totals.trips / company.users_count), 2);
+                // per capita calculation
+                let capita = _.round((company.totals.trips / company.employee_count), 3);
+                company.totals.capita = _.isNaN(capita) ? 0 : capita;
             });
 
             this.calculateTotals(companies);

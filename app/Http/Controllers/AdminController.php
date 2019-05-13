@@ -182,14 +182,30 @@ class AdminController extends Controller
 		return response()->json(['status' => false, 'message' => 'An error occured deleting the company', 'payload' => []]);
     }
 
-    public function exportUserNameAddress() {
+    public function exportUserNameAddress($challenge_id) {
         // get user with name, address and trip count, need to make this dynamic by passing in specific challenge id
-        $challenge = Challenge::where('id', 1)->first();
-        $now =  date("Y-m-d");
-        $users = User::whereHas('trips', function($query) use ($now, $challenge){
-            $query->WhereDate('date', '<', $now);
-        })->withCount('trips')->with('company:id,name')->get();
-        $users = $users->transform(function($user){
+        // this gets all users and their trip data for specific challenge
+        $challenge = Challenge::findOrFail($challenge_id);
+        $today =  date("Y-m-d");
+        // $users = User::whereHas('trips', function($query) use ($now, $challenge){
+        //     $query->WhereDate('date', '<', $now);
+        // })->withCount('trips')->with('company:id,name')->get();
+
+        $users = User::whereHas('trips', function($query) use ($challenge, $today){
+            return $query->where('challenge_id', $challenge->id)
+                        ->where('date', '<=', $today)
+                        ->where('date', '>=', $challenge->start_date);
+        })->with(array('trips' => function($query) use ($challenge, $today) {
+            return $query->where('challenge_id', $challenge->id)
+                        ->where('date', '<=', $today)
+                        ->where('date', '>=', $challenge->start_date);
+        }))->with('company')->withCount(array('trips' => function($query) use ($challenge, $today){
+            return $query->where('challenge_id', $challenge->id)
+                        ->where('date', '<=', $today)
+                        ->where('date', '>=', $challenge->start_date);
+        }))->get();
+
+        $users = $users->transform(function($user) use ($challenge) {
             // add modes used to excel
             $modes = collect($user->trips)->pluck('mode')->unique()->implode(' - ');
             $name = explode(" ", $user['name']);
@@ -210,7 +226,8 @@ class AdminController extends Controller
                 'zip' => $user['zip'],
                 'company' => $user['company'] = $user['company']['name'],
                 'trips_count' => $user['trips_count'],
-                'modes' => $modes
+                'modes' => $modes,
+                'challenge' => $challenge->name
             ];
         })->toArray();
         // set path for saving csv
@@ -220,7 +237,7 @@ class AdminController extends Controller
         foreach ( $users as $user ) {
             if ($i == 0) {
                 // make headers
-                fputcsv($fp, ['First', 'Last', 'Full Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes']);
+                fputcsv($fp, ['First', 'Last', 'Full Name', 'Email', 'Street', 'City', 'State','Zip', 'Company', 'Trips', 'Modes', 'Challenge']);
             }
             // put in user
             fputcsv($fp, $user);

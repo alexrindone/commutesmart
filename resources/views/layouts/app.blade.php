@@ -85,10 +85,13 @@
                                        >
                                         {{ __('Update Captains') }}
                                     </a>
-                                    <a class="dropdown-item" href="/admin/users-trips-export"
-                                       >
-                                        {{ __('Export User Trips Data') }}
-                                    </a>
+                                    @foreach(App\Challenge::orderBy('name')->get() as $challenge)
+
+                                        <a class="dropdown-item" href="/admin/users-trips-export/{{$challenge->id}}">
+                                            Export User Trips Data for {{$challenge->name}}
+                                        </a>
+                                    @endforeach
+                                    
                                     <a class="dropdown-item" href="/admin/users-registered-export"
                                        >
                                         {{ __('Export Registered Users Data') }}

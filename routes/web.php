@@ -35,7 +35,7 @@ Route::prefix('trips')->middleware(['auth'])->group(function () {
 
 Route::prefix('leaderboard')->group(function () {
     Route::get('/', function(){
-        return redirect('/leaderboard/companies/may-b2b-challenge');
+        return redirect('/leaderboard/individual/dump-the-pump-2019');
     });
     Route::get('/individual/{slug}', 'LeaderboardController@individual');
     Route::get('/companies/{slug}', 'LeaderboardController@companiesLeaderboard');

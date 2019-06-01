@@ -64,6 +64,10 @@
                                        >
                                         {{ __('Conquer the Cold 2018') }}
                                     </a>
+                                    <a class="dropdown-item" href="/leaderboard/companies/may-b2b-challenge"
+                                       >
+                                        {{ __('May B2B Challenge') }}
+                                    </a>
                                 </div>
                             </li>
                             @if (Auth::user()->type == 'admin')

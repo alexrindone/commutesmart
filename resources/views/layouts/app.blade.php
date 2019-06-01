@@ -66,7 +66,7 @@
                                     </a>
                                     <a class="dropdown-item" href="/leaderboard/companies/may-b2b-challenge"
                                        >
-                                        {{ __('May B2B Challenge') }}
+                                        {{ __('May B2B Challenge 2019') }}
                                     </a>
                                 </div>
                             </li>

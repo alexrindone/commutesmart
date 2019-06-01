@@ -64,7 +64,7 @@
                                                             <img v-if="user.trips_count >= 46" :src="challenge.level_four_icon" class="img-fluid" :alt="challenge.level_four_label">
                                                         </span>
                                                         {{user.name}}<br />
-                                                        {{user.company.name}}
+                                                        <span v-if="user.company && user.company.hasOwnProperty('name')">{{user.company.name}}</span>
                                                     </td>
                                                     <td>{{user.total_trips}}<span v-if="filtered != 'unfiltered'"> of {{user.trips_count}}</span></td>
                                                     <td>{{user.total_miles}}mi</td>

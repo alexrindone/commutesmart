@@ -34,14 +34,31 @@ class LeaderboardController extends Controller
         $challenge = Challenge::where('slug', $slug)->first();
         if ($challenge) {
             // sort by modes?
-            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-            $challenge = Challenge::first();
-            $now =  date("Y-m-d");
+            // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
+            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
+            // $challenge = Challenge::first();
+            $today =  date("Y-m-d");
             // get all users with trips
-            $users = User::whereHas('trips', function($query) use ($now){
-                $query->where('date', '<=', $now);
-            })->with('trips')->with('company')->whereHas('company')->withCount('trips')->get();
+            // $users = User::whereHas('trips', function($query) use ($now){
+            //     $query->where('date', '<=', $now);
+            // })->with('trips')->with('company')->whereHas('company')->withCount('trips')->get();
+            // $data = collect(['users' => $users, 'modes' => $modes, 'challenge' => $challenge]);
+            $users = User::whereHas('trips', function($query) use ($challenge, $today){
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            })->with(array('trips' => function($query) use ($challenge, $today) {
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            }))->with('company')->withCount(array('trips' => function($query) use ($challenge, $today){
+                return $query->where('challenge_id', $challenge->id)
+                            ->where('date', '<=', $today)
+                            ->where('date', '>=', $challenge->start_date);
+            }))->get();
+            // dd($users);
             $data = collect(['users' => $users, 'modes' => $modes, 'challenge' => $challenge]);
+
             return view('individual-leaderboard', ['data' => $data]);
         }
         return redirect('home');

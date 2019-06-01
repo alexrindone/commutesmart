@@ -31,7 +31,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Miles Traveled (Round Trip)</label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="number" min="0" v-model="form.miles">
+                                            <input class="form-control" type="number" min="0" v-model="form.miles" oninput="validity.valid||(value='');">
                                         </div>
                                     </div>
                                     <div class="form-group row">

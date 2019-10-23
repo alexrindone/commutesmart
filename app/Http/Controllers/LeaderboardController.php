@@ -34,8 +34,8 @@ class LeaderboardController extends Controller
         $challenge = Challenge::where('slug', $slug)->first();
         if ($challenge) {
             // sort by modes?
-            // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
+            $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
+            // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
             // $challenge = Challenge::first();
             $today =  date("Y-m-d");
             // get all users with trips

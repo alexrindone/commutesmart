@@ -10,6 +10,9 @@
                                 <h4 class="mb-0">Add Trip</h4>
                             </div>
                             <div class="card-body">
+                                <p class="text-center fancy-callout">
+                                    <span class="fancy-callout-text">Please only log 5 trips per week so it's a level playing field for everyone.</span>
+                                </p>
                                 <p class="text-right">Click <a href="https://commutesmartseacoast.org/wp-content/uploads/2017/10/instructions-for-fake-app.docx">here</a> for how to add our "app" to your phone.</p>
                                 <form class="form" role="form" autocomplete="off">
                                     <div class="form-group row">

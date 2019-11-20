@@ -39,8 +39,8 @@ class TripsController extends Controller
     {
         // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
         $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
-        // get all user trips, maybe we should limit how many? It might not matter
-        $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date')->get();
+        // get all user trips, maybe we should limit how many? It might not matter, order by date desc so latest trips are added at the top
+        $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date', 'desc')->get();
         // get challenges for form dropdown
         $challenges = Challenge::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
         $user = Auth::user();

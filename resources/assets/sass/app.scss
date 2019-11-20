@@ -59,3 +59,12 @@ table {
 a.company-link {
   color: #36a9a7;
 }
+
+.fancy-callout {
+  padding: 1em;
+  .fancy-callout-text {
+    padding: 1em;
+    background-color: #f7f7f7;
+    border-left: 2px solid #f9c425;
+  }
+}

@@ -60,13 +60,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/leaderboard/individual/conquer"
+                                    <a class="dropdown-item" href="/leaderboard/individual/conquer-2019"
                                        >
-                                        {{ __('Conquer the Cold 2018') }}
+                                        {{ __('Conquer the Cold 2019') }}
                                     </a>
                                     <a class="dropdown-item" href="/leaderboard/companies/may-b2b-challenge"
                                        >
                                         {{ __('May B2B Challenge 2019') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/leaderboard/individual/conquer"
+                                       >
+                                        {{ __('Conquer the Cold 2018') }}
                                     </a>
                                 </div>
                             </li>

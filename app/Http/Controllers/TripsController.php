@@ -37,8 +37,8 @@ class TripsController extends Controller
      */
     public function trips()
     {
-        // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
-        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
+        $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades', 'Telework', 'Carpool', 'Vanpool'];
+        // $modes = ['Bus/Train', 'Bicycle', 'Moped', 'Multi-Modal', 'Walk/Run', 'Skateboard/Rollerblades'];
         // get all user trips, maybe we should limit how many? It might not matter, order by date desc so latest trips are added at the top
         $trips = Trip::where('user_id', Auth::user()->id)->with('challenge')->orderBy('date', 'desc')->get();
         // get challenges for form dropdown

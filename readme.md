@@ -16,13 +16,13 @@ This application uses Laravel 7.2 PHP framework along with VueJS, Bootstrap CSS,
 6. Trip Logger
 
 This application follows the MVC software architecture. Custom code highlights include the following:
-    <a href="https://github.com/alexrindone/commutesmart/blob/master/routes/web.php">Web Routes</a>
-    <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/layouts/app.blade.php">Main App Template</a>
-    <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/auth/register.blade.php>User Registration</a>
-    <a href="https://github.com/alexrindone/commutesmart/tree/master/resources/assets/js/components">Various VueJS components</a>
-    <a href="https://github.com/alexrindone/commutesmart/tree/master/database/migrations">Migration Files for creating MySQL DB Tables</a>
-    <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Mail">Various PHP Mail functions</a>
-    <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Http/Controllers">Various Controller functions</a>
+1. <a href="https://github.com/alexrindone/commutesmart/blob/master/routes/web.php">Web Routes</a>
+2. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/layouts/app.blade.php">Main App Template</a>
+3. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/auth/register.blade.php>User Registration</a>
+4. <a href="https://github.com/alexrindone/commutesmart/tree/master/resources/assets/js/components">Various VueJS components</a>
+5. <a href="https://github.com/alexrindone/commutesmart/tree/master/database/migrations">Migration Files for creating MySQL DB Tables</a>
+6. <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Mail">Various PHP Mail functions</a>
+7. <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Http/Controllers">Various Controller functions</a>
 
 ## Issues
 Please email any issues, bugs, or additional features you would like to see built to arindone1679@gmail.com.

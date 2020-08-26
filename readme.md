@@ -1,65 +1,31 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Commutesmart SEACOAST
+<a href="https://commutesmartseacoast.org/">Commutesmart SEACOAST</a> is a free program that helps commuters find the best way to get to work or school. As part of the program Commutesmart SEACOAST offered three commuter challenges offer a fun way to earn prizes by commuting smart:
+    - Commute Smart B2B Challenge,  May 1-31
+    - Dump the Pump,  June 1 – August 31
+    - Conquer the Cold,  Nov. 1 – Jan. 31
+    
+This repository is the code for Commutesmart SEACOAST's trip logging application located <a href="trips.commutesmartseacoast.org">here</a>. Currently Commutesmart SEACOAST has stopped it's programming but <a href="http://commutesmartnh.org/">Commutesmart NH</a> will be using this trip logging application for the state-wide program.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Features/Documentation
+This application uses Laravel 7.2 PHP framework along with VueJS, Bootstrap CSS, and the Blade templating engine. 
+1. Admin Portal for managing challenges
+2. Various Challenge Leaderboards (company, individual, and overall)
+3. Team Management Portal (for company team captains)
+4. User Profile
+5. Login Portal
+6. Trip Logger
 
-## About Laravel
+This application follows the MVC software architecture. Custom code highlights include the following:
+1. <a href="https://github.com/alexrindone/commutesmart/blob/master/routes/web.php">Web Routes</a>
+2. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/layouts/app.blade.php">Main App Template</a>
+3. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/auth/register.blade.php">User Registration</a>
+4. <a href="https://github.com/alexrindone/commutesmart/tree/master/resources/assets/js/components">Various VueJS components</a>
+5. <a href="https://github.com/alexrindone/commutesmart/tree/master/database/migrations">Migration Files for creating MySQL DB Tables</a>
+6. <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Mail">Various PHP Mail functions</a>
+7. <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Http/Controllers">Various Controller functions</a>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
+## Issues
+Please email any issues, bugs, or additional features you would like to see built to arindone1679@gmail.com.
 
 ## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+If you wish to contribute to this package you may fork the repository and make a pull request to this repository.

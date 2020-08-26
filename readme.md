@@ -18,7 +18,7 @@ This application uses Laravel 7.2 PHP framework along with VueJS, Bootstrap CSS,
 This application follows the MVC software architecture. Custom code highlights include the following:
 1. <a href="https://github.com/alexrindone/commutesmart/blob/master/routes/web.php">Web Routes</a>
 2. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/layouts/app.blade.php">Main App Template</a>
-3. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/auth/register.blade.php>User Registration</a>
+3. <a href="https://github.com/alexrindone/commutesmart/blob/master/resources/views/auth/register.blade.php">User Registration</a>
 4. <a href="https://github.com/alexrindone/commutesmart/tree/master/resources/assets/js/components">Various VueJS components</a>
 5. <a href="https://github.com/alexrindone/commutesmart/tree/master/database/migrations">Migration Files for creating MySQL DB Tables</a>
 6. <a href="https://github.com/alexrindone/commutesmart/tree/master/app/Mail">Various PHP Mail functions</a>

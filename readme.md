@@ -4,7 +4,7 @@
     - Dump the Pump,  June 1 – August 31
     - Conquer the Cold,  Nov. 1 – Jan. 31
     
-This repository is the code for Commutesmart SEACOAST's trip logging application located <a href="trips.commutesmartseacoast.org">here</a>. Currently Commutesmart SEACOAST has stopped it's programming but <a href="http://commutesmartnh.org/">Commutesmart NH</a> will be using this trip logging application for the state-wide program.
+This repository is the code for Commutesmart SEACOAST's trip logging application located <a href="https://trips.commutesmartseacoast.org">here</a>. Currently Commutesmart SEACOAST has stopped it's programming but <a href="http://commutesmartnh.org/">Commutesmart NH</a> will be using this trip logging application for the state-wide program.
 
 ## Features/Documentation
 This application uses Laravel 7.2 PHP framework along with VueJS, Bootstrap CSS, and the Blade templating engine. 

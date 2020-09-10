@@ -27,6 +27,10 @@
                 <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a> -->
+                <a class="nav-bar-brand" href="http://commutesmartnh.org/">
+                    <img src="/images/commute-smart-logo-rgb.png" style="max-width:200px; height: auto;">
+                </a>
+                <div style="padding-right: 15px;">  </div>
                 <a class="nav-bar-brand" href="https://commutesmartseacoast.org">
                     <img src="/images/logo.png" style="max-width:200px; height: auto;">
                 </a>
@@ -60,6 +64,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <!-- <a class="dropdown-item" href="/leaderboard/individual/fall-2020-challenge"
+                                       >
+                                        {{ __('New Challenge Fall 2020') }}
+                                    </a> -->
                                     <a class="dropdown-item" href="/leaderboard/individual/conquer-2019"
                                        >
                                         {{ __('Conquer the Cold 2019') }}
@@ -140,6 +148,12 @@
                 </div>
             </div>
         </nav>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div style="text-align: center">This site is now being used to log trips for both CommuteSMART Seacoast, and its statewide counterpart, CommuteSmart NH.</div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

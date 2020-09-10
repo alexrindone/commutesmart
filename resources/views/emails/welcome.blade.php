@@ -12,8 +12,7 @@
             <br /><br />
             Best regards,
             <br /><br />
-            Anne Rugg <br />
-            Manager, CommuteSMART Seacoast
-        </p>
+            Your Friends at CommuteSMART Seacoast and CommuteSmart NH 
+        </p>        
     </body>
 </html>

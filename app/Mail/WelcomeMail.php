@@ -35,5 +35,6 @@ class WelcomeMail extends Mailable
     {
         return $this->view('emails.welcome')
         ->subject('Registration');
+        
     }
 }

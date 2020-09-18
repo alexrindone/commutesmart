@@ -57,9 +57,16 @@
                         @else
                             <li class="nav-item">
                                 @php
+                                $current_time = Carbon\Carbon::now()->toDateString();
                                 $leaderboard = App\Challenge::orderBy('id', 'desc')->get();
                                 @endphp
-                                <a class="nav-link" href="/leaderboard/{{ strtolower($leaderboard[0]->type) }}/{{ $leaderboard[0]->slug }}">{{__('Leaderboard') }}</a>
+
+                                @foreach ($leaderboard as $leaderboard_challenge) 
+                                    @if($leaderboard_challenge->start_date <= $current_time && $leaderboard_challenge->end_date >= $current_time) 
+                                        <a class="nav-link" href="/leaderboard/{{ strtolower($leaderboard_challenge->type) }}/{{ $leaderboard_challenge->slug }}">{{ $leaderboard_challenge->name}}</a>
+                                                              
+                                @endif
+                                @endforeach
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

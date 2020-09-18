@@ -92,7 +92,7 @@
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
                                             <input type="reset" class="btn btn-secondary" value="Cancel">
-                                            <input v-on:click="addChallenge()" type="button" class="btn btn-primary" value="Add">
+                                            <input v-if="!submitting" :disabled="!isEnabled" v-on:click="addChallenge()" type="button" class="btn btn-primary" value="Add">
                                         </div>
                                     </div>
                                 </form>
@@ -245,11 +245,13 @@ export default {
         name: ""
       },
       challenges: this.data.challenges,
-      activeEditId: ""
+      activeEditId: "",
+      submitting: false,
     };
   },
   methods: {
     addChallenge() {
+        this.submitting = true;
       axios
         .post(`/admin/add-challenge`, this.form)
         .then(response => {
@@ -299,6 +301,14 @@ export default {
         .catch(error => {});
     }
   },
-  computed: {}
+  computed: {
+      isEnabled() {
+          return this.form.name && this.form.name.length > 0 &&
+          this.form.slug && this.form.slug.length > 0 &&
+          this.form.image_url && this.form.image_url.length > 0 &&
+          this.form.start_date && this.form.start_date.length > 0 &&
+          this.form.end_date && this.form.end_date.length > 0;
+      }
+  }
 };
 </script>

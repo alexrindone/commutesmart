@@ -50,7 +50,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Level One</label>
                                         <div class="col-lg-6">
                                             <input placeholder="Image Url for Icon" class="form-control" type="text" v-model="form.level_one_icon">
@@ -87,7 +87,7 @@
                                         <div class="col-lg-3">
                                             <input placeholder="Level Label" class="form-control" type="text" v-model="form.level_four_label">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
@@ -153,7 +153,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table class="table" v-if="challenges.length > 0">
+                                <!-- <table class="table" v-if="challenges.length > 0">
                                     <thead>
                                         <tr>
                                             <th scope="col">Level One Icon</th>
@@ -212,7 +212,7 @@
                                             <td v-else>{{challenge.level_four_label}}</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
                                 <p v-else>No companies found.</p>
                             </div>
                         </div>

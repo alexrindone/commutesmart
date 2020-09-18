@@ -64,22 +64,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <!-- <a class="dropdown-item" href="/leaderboard/individual/fall-2020-challenge"
-                                       >
-                                        {{ __('New Challenge Fall 2020') }}
-                                    </a> -->
-                                    <a class="dropdown-item" href="/leaderboard/individual/conquer-2019"
-                                       >
-                                        {{ __('Conquer the Cold 2019') }}
-                                    </a>
-                                    <a class="dropdown-item" href="/leaderboard/companies/may-b2b-challenge"
-                                       >
-                                        {{ __('May B2B Challenge 2019') }}
-                                    </a>
-                                    <a class="dropdown-item" href="/leaderboard/individual/conquer"
-                                       >
-                                        {{ __('Conquer the Cold 2018') }}
-                                    </a>
+                                    @foreach (App\Challenge::orderBy('end_date', 'desc')->get() as $challenge)
+                                    <a class="dropdown-item" href="/leaderboard/{{ strtolower($challenge->type) }}/{{ $challenge->slug }}"> {{ $challenge->name}}</a>
+                                    @endforeach                                    
                                 </div>
                             </li>
                             @if (Auth::user()->type == 'admin')

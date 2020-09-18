@@ -56,7 +56,10 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/leaderboard">{{ __('Leaderboard') }}</a>
+                                @php
+                                $leaderboard = App\Challenge::orderBy('id', 'desc')->get();
+                                @endphp
+                                <a class="nav-link" href="/leaderboard/{{ strtolower($leaderboard[0]->type) }}/{{ $leaderboard[0]->slug }}">{{__('Leaderboard') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -64,7 +67,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @foreach (App\Challenge::orderBy('end_date', 'desc')->get() as $challenge)
+                                    @foreach (App\Challenge::orderBy('id', 'desc')->get() as $challenge)
                                     <a class="dropdown-item" href="/leaderboard/{{ strtolower($challenge->type) }}/{{ $challenge->slug }}"> {{ $challenge->name}}</a>
                                     @endforeach                                    
                                 </div>

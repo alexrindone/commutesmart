@@ -75,7 +75,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @foreach (App\Challenge::orderBy('id', 'desc')->get() as $challenge)
+                                    @if($challenge->end_date <= $current_time) 
                                     <a class="dropdown-item" href="/leaderboard/{{ strtolower($challenge->type) }}/{{ $challenge->slug }}"> {{ $challenge->name}}</a>
+                                    @endif
                                     @endforeach                                    
                                 </div>
                             </li>

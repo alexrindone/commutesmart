@@ -54,7 +54,7 @@
                                         <!-- @endif -->
                                     @endforeach
                                 </select>
-                                <small id="companyHelp" class="form-text text-muted" style="font-size: 0.9rem;">Don't see your company? Select <strong>Other</strong> and email <a href="mailto:info@commutesmartseacoast">info@commutesmartseacoast</a> if you would like it added.</small>
+                                <small id="companyHelp" class="form-text text-muted" style="font-size: 0.9rem;">Don't see your company? Select <strong>Other</strong> and email <a href="mailto:info@commutesmartnh.org">info@commutesmartnh.org</a> if you would like it added.</small>
                                 @if ($errors->has('company_id'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('company_id') }}</strong>

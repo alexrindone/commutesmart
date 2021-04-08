@@ -32,14 +32,15 @@ class DatabaseSeeder extends Seeder
 
         // Add user
         $general_user = User::create([
-            'name' => 'Seth Bridges',
-            'email' => 'matvmp7@gmail.com',
+            'name' => 'Shayna Sylvia',
+            'email' => 'shayna.sylvia@gmail.com',
             'password' => Hash::make('12345678'),
             'street' => '9 Mill Pond Rd',
             'city' => 'Northwood',
             'state' => 'NH',
             'zip' => '03261',
-            'company_id' => $company->id
+            'company_id' => $company->id,
+            'type' => 'admin'
         ]);
 
         // Add Challenge

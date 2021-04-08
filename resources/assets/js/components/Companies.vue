@@ -27,9 +27,11 @@
                                         <label class="col-lg-3 col-form-label form-control-label">Size</label>
                                         <div class="col-lg-9">
                                             <select id="size" class="form-control" v-model="form.size">
-                                                <option value="Small">Small (2-19 employees)</option>
-                                                <option value="Medium">Medium (20-99 employees)</option>
-                                                <option value="Large">Large (100+ employees)</option>
+                                                <option value="Micro">Micro (2-9 employees)</option>
+                                                <option value="Small">Small (10-24 employees)</option>
+                                                <option value="Medium">Medium (25-99 employees)</option>
+                                                <option value="Large">Large (100-499 employees)</option>
+                                                <option value="Major">Major (500+ employees)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -72,9 +74,11 @@
                                             <td v-else>{{company.name}}</td>
                                             <td v-if="activeEditId == company.id">
                                                 <select id="size" class="form-control" v-model="company.size">
-                                                    <option value="Small">Small (2-19 employees)</option>
-                                                    <option value="Medium">Medium (20-99 employees)</option>
-                                                    <option value="Large">Large (100+ employees)</option>
+                                                    <option value="Micro">Micro (2-9 employees)</option>
+                                                    <option value="Small">Small (10-24 employees)</option>
+                                                    <option value="Medium">Medium (25-99 employees)</option>
+                                                    <option value="Large">Large (100-499 employees)</option>
+                                                    <option value="Major">Major (500+ employees)</option>
                                                 </select>
                                             </td>
                                             <td v-else>{{company.size}}</td>

@@ -61,6 +61,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Region</th>
                                             <th scope="col">Size</th>
                                             <th scope="col"># of Employees</th>
                                             <th scope="col" class="text-right"></th>
@@ -72,6 +73,13 @@
                                                 <input class="form-control" type="text" v-model="company.name">
                                             </td>
                                             <td v-else>{{company.name}}</td>
+                                            <td v-if="activeEditId == company.id">  
+                                                <select id="region" class="form-control" v-model="company.region">
+                                                    <option value=""></option>
+                                                    <option value="Seacoast">Seacoast</option>
+                                                </select>
+                                            </td>
+                                            <td v-else>{{company.region}}</td>
                                             <td v-if="activeEditId == company.id">
                                                 <select id="size" class="form-control" v-model="company.size">
                                                     <option value="Micro">Micro (2-9 employees)</option>
@@ -162,7 +170,7 @@ export default {
         axios
         .put(`/admin/${company.id}/edit-company`, company)
         .then(response => {
-          console.log(response.data.payload);
+          console.log(response);
 
         })
         .catch(error => {});

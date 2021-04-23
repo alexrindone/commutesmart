@@ -134,7 +134,6 @@ export default {
         },
         toggleSeacoast(){
             this.seacoastOnly = !this.seacoastOnly;
-            console.log("toggling working");
         }
   },
   computed: {
@@ -172,7 +171,6 @@ export default {
             let filterBySeacoast = this.seacoastOnly;
             if (filterBySeacoast) {
                 companies = _.filter(companies, function(company){
-                    console.log(company.region);
                     return company.region == "Seacoast";
                 });
             }

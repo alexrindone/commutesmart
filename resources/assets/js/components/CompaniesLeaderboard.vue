@@ -48,6 +48,12 @@
                                                 <option v-for="size in sizes" :value="size">{{size}}</option>
                                             </select>
                                         </div>
+                                        <div class="col-sm-3">
+                                            <div class="pl-3"> 
+                                                <input v-on:click="toggleSeacoast()" v-model="seacoastOnly" id="seacoast" class="form-check-input position-static" type="checkbox" />
+                                                <label for="seacoast" class="form-check-label">Filter by Seacoast</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row table-responsive-sm">
                                         <table class="table leaderboard" v-if="sumTrips.length > 0">
@@ -100,6 +106,7 @@ export default {
   data() {
     return {
       companies: this.data.companies,
+      seacoastOnly: false,
       modes: this.data.modes,
       sizes: this.data.sizes,
       challenge: this.data.challenge,
@@ -124,6 +131,9 @@ export default {
                 co: _.sumBy(companies, 'totals.co'),
                 money: _.sumBy(companies, 'totals.money')
             }
+        },
+        toggleSeacoast(){
+            this.seacoastOnly = !this.seacoastOnly;
         }
   },
   computed: {
@@ -156,9 +166,18 @@ export default {
                     return company.size == filterBySize;
                 });
             }
+
+            // filter by Seacoast
+            let filterBySeacoast = this.seacoastOnly;
+            if (filterBySeacoast) {
+                companies = _.filter(companies, function(company){
+                    return company.region == "Seacoast";
+                });
+            }
             _.forEach(companies, function(company){
                  _.forEach(company.users, function(user) {
                     let trips = user.trips;
+
                     // trying to add filter by mode
                     if (filtered != 'unfiltered') {
                         user.filtered_trips = _.filter(user.trips, function(trip) {

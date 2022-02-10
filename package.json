@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "moment": "^2.22.2",
-        "node-sass": "^4.14.1",
+        "node-sass": "^7.0.0",
         "vue-currency-filter": "^2.3.0",
         "vue-rangedate-picker": "^0.3.4",
         "vue2-datepicker": "^2.4.1",
